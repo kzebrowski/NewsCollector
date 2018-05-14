@@ -1,0 +1,38 @@
+﻿.articleTitle{
+    display:block;
+    margin-top:30px;
+    margin-left:20px;
+    margin-right:20px;
+    text-align:justify;
+}
+
+.articlePicture{
+    display:block;
+    width:90%;
+    margin:auto;
+    height:360px;
+    margin-top:30px;
+    background-image:url(https://www.discovertheforest.org/wp-content/uploads/2018/01/06.jpg);
+    background-size:cover;
+}
+
+.leadParagraph{
+    display:block;
+    width:95%;
+    margin:auto;
+    text-align:justify;
+}
+
+.articleContent{
+    display:block;
+    width:90%;
+    margin:auto;
+    margin-top:35px;
+    font-size:medium;
+    text-align:justify;
+    font-size:18px;
+    font-weight:500;
+}
+.articleContent p{
+    margin-top:23px;
+}

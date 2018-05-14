@@ -26,5 +26,10 @@ namespace NewsCollector.Controllers
 
             return View();
         }
+
+        public ActionResult Article()
+        {
+            return View();
+        }
     }
 }
