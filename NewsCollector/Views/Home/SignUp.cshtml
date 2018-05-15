@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Register Form</title>
+  <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/signUp.css")">
+</head>
+<body>
+  <section class="containerLogin">
+    <div class="login">
+      <div id="loginTitle">Zarejestruj się!</div>
+      <form method="post" action="index.html">
+        <p><input type="text" name="email" value="" placeholder="Email" required></p>
+        <p><input type="text" name="nick" value="" placeholder="Nick" required></p>
+        <p><input type="password" name="password" value="" placeholder="Hasło" required></p>
+        <p><input type="password" name="password-repeat" value="" placeholder="Powtórz hasło" required></p>
+        <label for="birthday">Data urodzenia:</label>
+        <p><input type="date" value="1939-08-01" name="birthday" min="1990-01-01" max="2018-06-01" required></p>
+		<p class="terms">
+            <input type="checkbox" name="terms" id="terms" required>
+            <a>Akceptuję regulamin</a>
+        </p>
+        <p class="submitBtn"><input type="submit" name="commit" value="ZAREJESTRUJ"></p>
+      </form>
+    </div>
+    <div class="login-help">
+      <a href="signin.html">Masz już konto ?</a>
+    </div>
+  </section>
+</body>
+</html>
