@@ -1,0 +1,72 @@
+body {
+  font: 15px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+  color: #404040;
+  background-image: url("https://i.ytimg.com/vi/yGEOXfRfLAo/maxresdefault.jpg");
+  background-size:cover;
+}
+
+.containerLogin {
+
+  margin: 100px auto;
+  width: 300px;
+  height: 400px;
+  background: transparent;
+  align-content: center;
+  flex-wrap: wrap;
+  text-align:center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px 15px 15px 15px;
+  border-top-style:solid;
+  border-bottom-style:solid;
+   border-left-style:solid;
+    border-right-style:solid;
+}
+#loginTitle {
+ font: 40px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+ color: #000000;
+ margin: 20px auto;
+}
+.submitBtn{
+  margin: 10px 30px 21px;
+}
+input[type="text"]
+{ 
+	margin: 10px;
+	font-size: 20px;
+    text-decoration: underline;  
+    background: transparent;
+    border: none;
+}
+input[type="password"]
+{ 
+	margin: 10px ;
+	margin-bottom: 15px;
+	font-size: 20px;
+    text-decoration: underline;  
+    background: transparent;
+    border: none;
+    text-color:black
+}
+label{
+	font-size:18px;
+    color:black;
+}
+input[type=submit] {
+	font-family: serif;
+	width:240px;
+    height:40px;
+	margin-top: 15px;
+    margin-bottom:20px;
+	font-size:20px;
+	color:white;
+    background-color:black;
+    border-color:black;
+	border-radius: 10px 10px 10px 10px;
+}
+a{
+
+	color:black;
+    font-size:18px;
+    font-weight:bold;
+}
