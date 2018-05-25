@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/NewsCollector/website/scripts/particles.js-master/demo/XXXparticles.json
