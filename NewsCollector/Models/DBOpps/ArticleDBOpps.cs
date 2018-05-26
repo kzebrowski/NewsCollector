@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NewsCollector.Models.Contexts;
 using log4net;
 using System.Reflection;
 
@@ -10,7 +9,7 @@ namespace NewsCollector.Models.DBOpps
 {
     public class ArticleDBOpps
     {
-        private NewsContext Articles; /*!< Connection with database */
+        private ApplicationDbContext Articles; /*!< Connection with database */
 
         private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType); /*!< Logger from log4net. */
                                                                                                                  //!< Mainly for logging error's durning work with DB.
@@ -20,7 +19,7 @@ namespace NewsCollector.Models.DBOpps
         {
             List<ArticleModel> result = new List<ArticleModel>();
 
-            using (Articles = new NewsContext())
+            using (Articles = ApplicationDbContext.Create())
             {
                 foreach (ArticleModel c in this.Articles.articles)
                 {
@@ -46,7 +45,7 @@ namespace NewsCollector.Models.DBOpps
         //! Returns all articles as a list.
         public IList<ArticleModel> GetAllArticles()
         {
-            using (Articles = new NewsContext())
+            using (Articles = ApplicationDbContext.Create())
             {
                 try
                 {
@@ -60,10 +59,10 @@ namespace NewsCollector.Models.DBOpps
             }
         }
 
-        //! Add's an Article to DB.
+        //! Add's an article to DB.
         public void AddArticle(ArticleModel article)
         {
-            using (Articles = new NewsContext())
+            using (Articles = ApplicationDbContext.Create())
             {
                 try
                 {
@@ -77,12 +76,12 @@ namespace NewsCollector.Models.DBOpps
             }
         }
 
-        //! Modifies a user that has the same id as arugment.
+        //! Modifies an article that has the same id as arugment.
         public void ModifiyArticle(ArticleModel article)
         {
-            using (Articles = new NewsContext())
+            using (Articles = ApplicationDbContext.Create())
             {
-                var original = Articles.users.Find(article.Id);
+                var original = Articles.articles.Find(article.Id);
                 if (original != null)
                 {
                     Articles.Entry(original).CurrentValues.SetValues(article);
@@ -95,10 +94,10 @@ namespace NewsCollector.Models.DBOpps
             }
         }
 
-        //! Remove'a user with set id.
+        //! Remove an article with set id.
         public void RemoveArticle(int id)
         {
-            using (Articles = new NewsContext())
+            using (Articles = ApplicationDbContext.Create())
             {
                 var result = Articles.articles.Find(id);
                 if (result != null)

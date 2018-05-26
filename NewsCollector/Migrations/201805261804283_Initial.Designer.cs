@@ -13,7 +13,7 @@ namespace NewsCollector.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805261624256_Initial"; }
+            get { return "201805261804283_Initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using NewsCollector.Models.Contexts;
 using log4net;
 using System.Reflection;
 
@@ -10,19 +9,19 @@ namespace NewsCollector.Models.DBOpps
 {
     public class UserDBOpps
     {
-        private NewsContext Clients; /*!< Connection with database */
+        private ApplicationDbContext Clients; /*!< Connection with database */
 
         private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType); /*!< Logger from log4net. */
                                                                                                                  //!< Mainly for logging error's durning work with DB.
 
         //! Returns user that has an attribute equal to criteria.
-        IList<UserModel> GetClients(string colName /**< Name of attribute */, string criteria /**< Value of attribute */)
+        IList<ApplicationUser> GetClients(string colName /**< Name of attribute */, string criteria /**< Value of attribute */)
         {
-            List<UserModel> result = new List<UserModel>();
+            List<ApplicationUser> result = new List<ApplicationUser>();
 
-            using (Clients = new NewsContext())
+            using (Clients = ApplicationDbContext.Create())
             {
-                foreach (UserModel c in this.Clients.users)
+                foreach (ApplicationUser c in this.Clients.Users)
                 {
                     try
                     {
@@ -44,13 +43,13 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Returns all clients as a list.
-        IList<UserModel> GetAllClients()
+        IList<ApplicationUser> GetAllClients()
         {
-            using (Clients = new NewsContext())
+            using (Clients = ApplicationDbContext.Create())
             {
                 try
                 {
-                    return Clients.users.ToList();
+                    return Clients.Users.ToList();
                 }
                 catch (Exception e)
                 {
@@ -62,14 +61,14 @@ namespace NewsCollector.Models.DBOpps
 
 
         //! Add's a Client to DB.
-        void AddClient(UserModel user)
+        void AddClient(ApplicationUser user)
         {
 
-            using (Clients = new NewsContext())
+            using (Clients = ApplicationDbContext.Create())
             {
                 try
                 {
-                    Clients.users.Add(user);
+                    Clients.Users.Add(user);
                     Clients.SaveChanges();
                 }
                 catch (Exception e)
@@ -80,11 +79,11 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Modifies a user that has the same id as arugment.
-        void ModifiyClient(UserModel user)
+        void ModifiyClient(ApplicationUser user)
         {
-            using (Clients = new NewsContext())
+            using (Clients = ApplicationDbContext.Create())
             {
-                var original = Clients.users.Find(user.Id);
+                var original = Clients.Users.Find(user.Id);
                 if (original != null)
                 {
                     Clients.Entry(original).CurrentValues.SetValues(user);
@@ -100,12 +99,12 @@ namespace NewsCollector.Models.DBOpps
         //! Remove'a user with set id.
         void RemoveClient(int id)
         {
-            using (Clients = new NewsContext())
+            using (Clients = ApplicationDbContext.Create())
             {
-                var result = Clients.users.Find(id);
+                var result = Clients.Users.Find(id);
                 if (result != null)
                 {
-                    Clients.users.Remove(result);
+                    Clients.Users.Remove(result);
                     Clients.SaveChanges();
                 }
                 else
