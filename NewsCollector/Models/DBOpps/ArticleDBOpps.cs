@@ -16,7 +16,7 @@ namespace NewsCollector.Models.DBOpps
                                                                                                                  //!< Mainly for logging error's durning work with DB.
 
         //! Returns article that has an attribute equal to criteria.
-        IList<ArticleModel> GetArticles(string colName /**< Name of attribute */, string criteria /**< Value of attribute */)
+        public IList<ArticleModel> GetArticles(string colName /**< Name of attribute */, string criteria /**< Value of attribute */)
         {
             List<ArticleModel> result = new List<ArticleModel>();
 
@@ -44,7 +44,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Returns all articles as a list.
-        IList<ArticleModel> GetAllArticles()
+        public IList<ArticleModel> GetAllArticles()
         {
             using (Articles = new NewsContext())
             {
@@ -61,7 +61,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Add's an Article to DB.
-        void AddArticle(ArticleModel article)
+        public void AddArticle(ArticleModel article)
         {
             using (Articles = new NewsContext())
             {
@@ -78,7 +78,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Modifies a user that has the same id as arugment.
-        void ModifiyArticle(ArticleModel article)
+        public void ModifiyArticle(ArticleModel article)
         {
             using (Articles = new NewsContext())
             {
@@ -96,7 +96,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Remove'a user with set id.
-        void RemoveArticle(int id)
+        public void RemoveArticle(int id)
         {
             using (Articles = new NewsContext())
             {

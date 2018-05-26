@@ -9,11 +9,14 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using NewsCollector.Models.DBOpps;
 
 namespace NewsCollector.Controllers
 {
     public class ArticleController : Controller
     {
+        private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();
+
         public ActionResult ArticleEditor()
         {
             return View();
@@ -28,7 +31,7 @@ namespace NewsCollector.Controllers
         [HttpPost]
         public ActionResult CreateArticle(ArticleViewModel article)
         {
-            ArticleModel acticleModel = new ArticleModel
+            ArticleModel articleModel = new ArticleModel
             {
                 Id = Guid.NewGuid(),
                 AuthorId = 1,
@@ -36,6 +39,8 @@ namespace NewsCollector.Controllers
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content
             };
+
+            _articleDBOpps.AddArticle(articleModel);
 
             return Json("success");
         }

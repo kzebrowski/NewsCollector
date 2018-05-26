@@ -33,12 +33,12 @@
                 }
                 $.ajax({
                     type: "POST",
-                    url: "/Article/ArticleView",
+                    url: "/Article/CreateArticle",
                     data: "{article: " + JSON.stringify(article)+"}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (response) {
-                        window.location.href = '/Article/Article'
+                        
                     }
                 });
             });
