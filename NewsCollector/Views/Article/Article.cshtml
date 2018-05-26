@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Artykuł";
+}
+@model NewsCollector.Models.ArticleViewModel
+
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/article.css")">
+
+<h1 class="articleTitle">@Html.DisplayFor(model => model.Title)</h1>
+<h3 class="lead leadParagraph">@Html.DisplayFor(model => model.LeadParagraph)</h3>
+
+<div class="articlePicture"></div>
+
+<div class="articleContent">
+    @Html.DisplayFor(model => model.Content)
+</div>
+
