@@ -95,7 +95,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Remove an article with set id.
-        public void RemoveArticle(int id)
+        public void RemoveArticle(Guid id)
         {
             using (Articles = ApplicationDbContext.Create())
             {
@@ -109,6 +109,16 @@ namespace NewsCollector.Models.DBOpps
                 {
                     logger.Error("RemoveArticle() - cannot remove non-existing in Database");
                 }
+            }
+        }
+
+        public IList<ArticleModel> GetArticlesForRedactor(Guid redacorId)
+        {
+            using (Articles = ApplicationDbContext.Create())
+            {
+                var result = this.Articles.articles.Where(a => a.AuthorId == redacorId).ToList();
+
+                return result;
             }
         }
     }
