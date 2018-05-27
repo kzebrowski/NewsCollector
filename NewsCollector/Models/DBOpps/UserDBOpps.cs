@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using log4net;
 using System.Reflection;
+using System.Security.Cryptography;
 
 namespace NewsCollector.Models.DBOpps
 {
@@ -15,7 +16,7 @@ namespace NewsCollector.Models.DBOpps
                                                                                                                  //!< Mainly for logging error's durning work with DB.
 
         //! Returns user that has an attribute equal to criteria.
-        IList<ApplicationUser> GetClients(string colName /**< Name of attribute */, string criteria /**< Value of attribute */)
+        public IList<ApplicationUser> GetClients(string colName /**< Name of attribute */, string criteria /**< Value of attribute */)
         {
             List<ApplicationUser> result = new List<ApplicationUser>();
 
@@ -43,7 +44,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Returns all clients as a list.
-        IList<ApplicationUser> GetAllClients()
+        public IList<ApplicationUser> GetAllClients()
         {
             using (Clients = ApplicationDbContext.Create())
             {
@@ -61,7 +62,7 @@ namespace NewsCollector.Models.DBOpps
 
 
         //! Add's a Client to DB.
-        void AddClient(ApplicationUser user)
+        public void AddClient(ApplicationUser user)
         {
 
             using (Clients = ApplicationDbContext.Create())
@@ -79,7 +80,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Modifies a user that has the same id as arugment.
-        void ModifiyClient(ApplicationUser user)
+        public void ModifiyClient(ApplicationUser user)
         {
             using (Clients = ApplicationDbContext.Create())
             {
@@ -97,7 +98,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Remove'a user with set id.
-        void RemoveClient(int id)
+        public void RemoveClient(string id)
         {
             using (Clients = ApplicationDbContext.Create())
             {

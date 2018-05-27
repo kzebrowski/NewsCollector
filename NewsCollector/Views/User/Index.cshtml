@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.displayMenu == "Admin")
+{
+    <h1>Welcome Admin: <strong>@ViewBag.Name</strong> </h1>    
+}
+else if(ViewBag.displayMenu == "Redactor")
+{
+    <h2>  Welcome Redactor: <strong>@ViewBag.Name</strong> </h2>
+}
+else if (ViewBag.displayMenu == "Subscriber")
+{
+    <h2>  Welcome Subscriber: <strong>@ViewBag.Name</strong> </h2>
+}
+else
+{
+    <h2>  Welcome: <strong>@ViewBag.Name</strong> </h2>
+}

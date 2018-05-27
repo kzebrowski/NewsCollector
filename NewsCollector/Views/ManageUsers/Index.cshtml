@@ -1,0 +1,98 @@
+﻿@model IEnumerable<NewsCollector.Models.UserViewModel>
+
+@{  
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="box-title">
+            <b>Users</b>
+        </h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="panel-body">
+        <table class="table table-hover table-bordered table-condensed" id="example1">
+            <thead>
+                <tr>
+                    <td><b>Username</b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Roles</b></td>
+                    <td><b>Delete</b></td>
+                </tr>
+            </thead>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>
+                        Current Role: <b>@user.Role</b> | Change to: 
+                        <select  onchange="ChangeRole(this);" name="@user.UserId">
+                            <option value="Regular">Regular</option>
+                            <option value="Subscriber">Subscriber</option>
+                            <option value="Redactor">Redactor</option>
+                        </select> 
+                    </td>                        
+                    <td>
+                        <a onclick="Delete(this)" name=@user.UserId >Delete</a>
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="panel-footer">
+        <p class="box-title"><b>Wszystkich uzytkownikow dzisiaj: @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        function ChangeRole(caller)
+        {
+            alert(caller.name);
+
+            var userid = caller.name;
+
+            $.ajax({
+                type: "POST",
+                url: "/ManageUsers/ChangeRole", // the URL of the controller action method
+                contentType: "application/json; charset=utf-8",
+                data: "{ id : " + JSON.stringify(userid) + ", newRole : " + JSON.stringify(caller.value) + "}",
+                dataType: "json",
+
+                success: function (result) {
+                    location.reload();
+                },
+                error: function (req, status, error) {
+                    alert(status);
+                }
+            });
+        }
+
+        function Delete(caller) {
+            alert(caller.name);
+
+            var userid = caller.name;
+
+            $.ajax({
+                type: "POST",                
+                url: "/ManageUsers/Delete", // the URL of the controller action method
+                contentType: "application/json; charset=utf-8",
+                data: "{ id : " + JSON.stringify(userid) + "}",
+                dataType: "json",
+
+                success: function (result) {
+                    location.reload();
+                },
+                error: function (req, status, error) {
+                    alert(status);
+                }
+            });
+        }
+    </script>
+}

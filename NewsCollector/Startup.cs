@@ -28,18 +28,17 @@ namespace NewsCollector
             if (!roleManager.RoleExists("Admin"))
             {
 
-                // first we create Admin rool   
+                // first we create Admin role   
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
 
-                //Here we create a Admin super user who will maintain the website                  
-
+                //Here we create a Admin super user who will maintain the website
                 var user = new ApplicationUser();
-                user.UserName = "shanu";
-                user.Email = "syedshanumcain@gmail.com";
+                user.UserName = "admin@gmail.com";
+                user.Email = "admin@gmail.com";
 
-                string userPWD = "A@Z200711";
+                string userPWD = "12QWas_+";
 
                 var chkUser = UserManager.Create(user, userPWD);
 
@@ -47,26 +46,78 @@ namespace NewsCollector
                 if (chkUser.Succeeded)
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Admin");
+                }
+            }
+
+            // creating Creating Redactor role    
+            if (!roleManager.RoleExists("Redactor"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Redactor";
+                roleManager.Create(role);
+
+                //Here we create a Redactor user
+                var user = new ApplicationUser();
+                user.UserName = "redactor@gmail.com";
+                user.Email = "redactor@gmail.com";
+
+                string userPWD = "12QWas_+";
+
+                var chkUser = UserManager.Create(user, userPWD);
+
+                //Add default User to Role Redactor   
+                if (chkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "Redactor");
+                }
+            }
+
+            // creating Creating Regular role    
+            if (!roleManager.RoleExists("Regular"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Regular";
+                roleManager.Create(role);
+
+                //Here we create a Regular user
+                var user = new ApplicationUser();
+                user.UserName = "regular@gmail.com";
+                user.Email = "regular@gmail.com";
+
+                string userPWD = "12QWas_+";
+
+                var chkUser = UserManager.Create(user, userPWD);
+
+                //Add default User to Role Regular   
+                if (chkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "Regular");
 
                 }
             }
 
-            // creating Creating Manager role    
-            if (!roleManager.RoleExists("Manager"))
+            // creating Creating Subscriber role    
+            if (!roleManager.RoleExists("Subscriber"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Manager";
+                role.Name = "Subscriber";
                 roleManager.Create(role);
 
-            }
+                //Here we create a Subscriber user
+                var user = new ApplicationUser();
+                user.UserName = "sub@gmail.com";
+                user.Email = "sub@gmail.com";
 
-            // creating Creating Employee role    
-            if (!roleManager.RoleExists("Employee"))
-            {
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Employee";
-                roleManager.Create(role);
+                string userPWD = "12QWas_+";
 
+                var chkUser = UserManager.Create(user, userPWD);
+
+                //Add default User to Role Subscriber   
+                if (chkUser.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, "Subscriber");
+
+                }
             }
         }
     }
