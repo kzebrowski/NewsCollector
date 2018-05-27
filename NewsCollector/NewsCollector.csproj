@@ -201,8 +201,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RedactorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,18 +212,30 @@
     <Compile Include="Migrations\201805261804283_Initial.Designer.cs">
       <DependentUpon>201805261804283_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805261954457_Initial1.cs" />
+    <Compile Include="Migrations\201805261954457_Initial1.Designer.cs">
+      <DependentUpon>201805261954457_Initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ArticleBrowsingViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ModifyArticleViewModel.cs" />
+    <Compile Include="Models\CreateArticleViewModel.cs" />
     <Compile Include="Models\CWDFileAppender.cs" />
     <Compile Include="Models\DBOpps\ArticleDBOpps.cs" />
     <Compile Include="Models\DBOpps\UserDBOpps.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\NewsCollector.dll" />
+    <Content Include="bin\NewsCollector.pdb" />
     <Content Include="Content\article.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -234,6 +248,23 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Website\articles.html" />
+    <Content Include="Website\images\cat.jpg" />
+    <Content Include="Website\images\logowhite2.png" />
+    <Content Include="Website\index.html" />
+    <Content Include="Website\main.html" />
+    <Content Include="Website\scripts\particles.js-master\.gitignore" />
+    <Content Include="Website\scripts\particles.js-master\demo\css\style.css" />
+    <Content Include="Website\scripts\particles.js-master\demo\index.html" />
+    <Content Include="Website\scripts\particles.js-master\demo\js\app.js" />
+    <Content Include="Website\scripts\particles.js-master\demo\js\lib\stats.js" />
+    <Content Include="Website\scripts\particles.js-master\particles.js" />
+    <Content Include="Website\scripts\particles\app.js" />
+    <Content Include="Website\scripts\particles\particles.js" />
+    <Content Include="Website\styles\general.css" />
+    <Content Include="Website\styles\index.css" />
+    <Content Include="Website\styles\particles-style.css" />
+    <Content Include="Website\subscription.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -283,6 +314,18 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Account\AdministratorView.cshtml" />
+    <Content Include="Website\scripts\particles.js-master\bower.json" />
+    <Content Include="Website\scripts\particles.js-master\demo\particles.json" />
+    <Content Include="Website\scripts\particles.js-master\LICENSE.md" />
+    <Content Include="Website\scripts\particles.js-master\package.json" />
+    <Content Include="Website\scripts\particles.js-master\particlesjs-config.json" />
+    <Content Include="Website\scripts\particles.js-master\README.md" />
+    <Content Include="Views\Article\Article.cshtml" />
+    <Content Include="Views\Redactor\ArticleEditor.cshtml" />
+    <Content Include="Views\Redactor\Index.cshtml" />
+    <Content Include="Views\Account\UserControlPanel.cshtml" />
+    <Content Include="Views\Redactor\MyArticles.cshtml" />
+    <Content Include="Views\Redactor\EditArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -301,6 +344,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805261804283_Initial.resx">
       <DependentUpon>201805261804283_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805261954457_Initial1.resx">
+      <DependentUpon>201805261954457_Initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

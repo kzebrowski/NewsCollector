@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Security.Claims;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
 using NewsCollector.Models;
-using NewsCollector.Models.Contexts;
-using Newtonsoft.Json;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 using NewsCollector.Models.DBOpps;
 
 namespace NewsCollector.Controllers
@@ -17,24 +14,34 @@ namespace NewsCollector.Controllers
     {
         private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();
 
-        public ActionResult ArticleEditor()
+        public ActionResult Article(Guid id)
         {
-            return View();
-        }
-
-        public ActionResult Article()
-        {
-
-            return View();
+            ArticleModel article =_articleDBOpps.GetArticles("Id", id.ToString()).First();
+            CreateArticleViewModel model = new CreateArticleViewModel
+            {
+                Title = article.Title,
+                LeadParagraph = article.LeadingParagraph,
+                Content = article.Body
+            };
+            
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreateArticle(ArticleViewModel article)
-        {
+        public ActionResult CreateArticle(CreateArticleViewModel article)
+        {   
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+
+            var userIdClaim = claimsIdentity.Claims
+                 .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+            var userIdValue = userIdClaim.Value;
+            
+
             ArticleModel articleModel = new ArticleModel
             {
                 Id = Guid.NewGuid(),
-                AuthorId = 1,
+                AuthorId = new Guid(userIdValue),
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content
@@ -43,6 +50,39 @@ namespace NewsCollector.Controllers
             _articleDBOpps.AddArticle(articleModel);
 
             return Json("success");
+        }
+        
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            _articleDBOpps.RemoveArticle(new Guid(id));
+
+            return Json("done");
+        }
+
+        [HttpPost]
+        public ActionResult Update(ModifyArticleViewModel article)
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+
+            var userIdClaim = claimsIdentity.Claims
+                 .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+            var userIdValue = userIdClaim.Value;
+
+
+            ArticleModel modified = new ArticleModel
+            {
+                Id = article.Id,
+                Title = article.Title,
+                Body = article.Content,
+                LeadingParagraph = article.LeadParagraph,
+                AuthorId = new Guid(userIdValue)
+            };
+
+            _articleDBOpps.ModifiyArticle(modified);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
     }
 }

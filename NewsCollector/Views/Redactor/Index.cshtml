@@ -4,19 +4,19 @@
 }
 
 <ul class="nav nav-pills nav-justified" role="tablist" style="margin-top:30px">
-    <li class="active"><a href="@Url.Content("~/account/redactoraccount")">Info</a></li>
-    <li><a href="#">Moje Artykuły</a></li>
+    <li class="active"><a href="@Url.Content("~/redactor/index")">Info</a></li>
+    <li><a href="@Url.Content("~/redactor/MyArticles")">Moje Artykuły</a></li>
     <li><a href="#">Moje Komentarze</a></li>
-    <li><a href="#">Nowy Artykuł</a></li>
+    <li><a href="@Url.Content("~/redactor/articleEditor")">Nowy Artykuł</a></li>
 </ul>
 
 <table align="center" style="margin-top:40px">
     <tr>
         <td><h4>Nazwa użytkownika &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h4></td>
-        <td><h4>mockRedactor</h4></td>
+        <td><h4>@ViewBag.UserName</h4></td>
     </tr>
     <tr>
         <td><h4>E-mail</h4></td>
-        <td><h4>mock@redactor.com</h4></td>
+        <td><h4>@ViewBag.UserName</h4></td>
     </tr>
 </table>
