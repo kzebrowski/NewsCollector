@@ -44,18 +44,6 @@ namespace NewsCollector.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.UserModels",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 20),
-                        Surname = c.String(nullable: false, maxLength: 20),
-                        Email = c.String(nullable: false, maxLength: 50),
-                        Status = c.String(maxLength: 11),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -117,7 +105,6 @@ namespace NewsCollector.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.UserModels");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.ArticleModels");
