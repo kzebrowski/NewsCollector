@@ -1,6 +1,6 @@
 ﻿namespace NewsCollector.Models
 {
-    public class CreateArticleViewModel
+    public class ArticleViewModel
     {
         public string Title {get; set;}
         public string LeadParagraph { get; set; }

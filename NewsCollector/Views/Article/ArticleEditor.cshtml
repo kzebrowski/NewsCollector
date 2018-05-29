@@ -2,13 +2,7 @@
 @{
     ViewBag.Title = "CreateArticle";
 }
-
-<ul class="nav nav-pills nav-justified" role="tablist" style="margin-top:30px">
-    <li class="active"><a href="@Url.Content("~/redactor/index")">Info</a></li>
-    <li><a href="@Url.Content("~/redactor/MyArticles")">Moje Artykuły</a></li>
-    <li><a href="#">Moje Komentarze</a></li>
-    <li><a href="@Url.Content("~/redactor/articleEditor")">Nowy Artykuł</a></li>
-</ul>
+@model NewsCollector.Models.ArticleModel
 
 <div class="container">
     <form>
@@ -43,11 +37,8 @@
                     data: "{article: " + JSON.stringify(article)+"}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    complete: function (response) {
-                        location.replace("@Url.Content("~/Redactor/MyArticles")");
-                    },
-                    error: function (response) {
-                        location.replace("@Url.Content("~/Redactor/MyArticles")");
+                    success: function (response) {
+                        
                     }
                 });
             });

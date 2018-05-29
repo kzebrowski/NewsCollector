@@ -11,7 +11,7 @@ namespace NewsCollector.Models
         [Key]
         public Guid Id { get; set; }
         [Required]
-        public Guid AuthorId { get; set; }
+        public int AuthorId { get; set; }
         [Required]
         public string Title { get; set; }
         [Required]
