@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NewsCollector.Models;
+using Rotativa;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,22 @@ namespace NewsCollector.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            ApplicationDbContext newsContext = new ApplicationDbContext();
+            List<ArticleModel> articles = newsContext.articles.ToList();
+            return View(articles);
+        }
+
+        public ActionResult ArticleRead(Guid id)
+        {
+            ApplicationDbContext newsContext = new ApplicationDbContext();
+            ArticleModel article = newsContext.articles.Single(ar => ar.Id == id);
+
+            return View(article);
+        }
+        public ActionResult ExportPdf(Guid id)
+        {
+            var q = new ActionAsPdf("ArticleRead", new { id = id });
+            return q;
         }
 
         public ActionResult About()
