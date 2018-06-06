@@ -127,7 +127,7 @@ namespace NewsCollector
             ApplicationDbContext db = new ApplicationDbContext();
             var art = new ArticleModel();
             art.Id = Guid.NewGuid();
-            art.AuthorId = 1;
+            art.AuthorId = new Guid();
             art.Title = "Lorem ipsum dolor sit amet, est constituto consequuntur te, wisi sed.";
             art.LeadingParagraph = "Ne quis inermis perpetua duo, vel ex noster habemus intellegat. Ut quo libris ceteros scriptorem, vis ex minim commune offendit, vim ex propriae omnesque percipit. Sea homero ornatus cu. Perpetua maiestatis definitiones eu quo.";
             art.Body = "Id illud aeque quodsi qui, probo definitiones conclusionemque te has, eu has invidunt inimicus delicatissimi. Sea et vero idque verterem, ne vis vitae doming semper. Et porro volumus salutatus usu. Duis sonet adolescens te pri, case complectitur ius an. Eu nam agam tantas mucius. Est eius suscipiantur eu, eos ad cibo elaboraret, te explicari consectetuer comprehensam has." +
