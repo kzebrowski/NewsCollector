@@ -1,40 +1,71 @@
 
 body {
+<<<<<<< HEAD
 	background-image: url("descriptionPageBack.jpg");
+=======
+	background-image: url("http://gdurl.com/csAF");
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	background-size:cover;
 }
 
 #title{
+<<<<<<< HEAD
 	margin-top: 40px;
 	font: 26px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+=======
+	margin-top: 60px;
+	font: 50px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	color:white;
 	text-align:center;
 }
 
 #subtitle{
+<<<<<<< HEAD
 	margin-top: 5px;
 	font: 15px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+=======
+	margin-top: 10px;
+	font: 30px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	color:white;
 	text-align:center;
 }
 
 #title2{
 	padding-top: 20px;
+<<<<<<< HEAD
 	margin-bottom: 10px;
 	font: 24px 'Lucida Sans Unicode';
+=======
+	margin-bottom: 20px;
+	font: 40px 'Lucida Sans Unicode';
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	color:black;
 	text-align:center;
 }
 #price{
+<<<<<<< HEAD
 	margin-bottom:20px;
+=======
+	margin-bottom:30px;
+	font: 25px 'Lucida Sans Unicode';
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 }
 
 .mainContainer{
 	
+<<<<<<< HEAD
 	margin-top: 25px;
 	background:transparent;
 	width: 900px;
 	height: 300px;
+=======
+	margin-top: 50px;
+	background:transparent;
+	width: auto;
+	height: auto;
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	flex-wrap: wrap;
 	text-align:center;
 	align-items: center;
@@ -44,16 +75,26 @@ body {
 }
 .container1mSub{
 	background:white;
+<<<<<<< HEAD
 	margin-top: 10px;
     margin-bottom:10px;
     margin-left: 10px;
     margin-right:10px;
     width: 150px;
 	height: 200px;
+=======
+	margin-top: 20px;
+    margin-bottom:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    width: 240px;
+	height: 350px;
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	display:inline-block;
 	border-radius: 25px 25px 25px 25px;
 	border-color:black;
 	
+<<<<<<< HEAD
 }
 
 .container3mSub{
@@ -64,6 +105,20 @@ body {
     margin-right:10px;
     width: 150px;
 	height: 200px;
+=======
+	
+}
+
+.container3mSub{
+
+	background:white;
+	margin-top: 20px;
+    margin-bottom:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    width: 240px;
+	height: 350px;
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	display:inline-block;
 	border-radius: 25px 25px 25px 25px;
 	border-color:black;
@@ -72,16 +127,26 @@ body {
 .container6mSub{
 
 	background:white;
+<<<<<<< HEAD
 	margin-top: 10px;
     margin-bottom:10px;
     margin-left: 10px;
     margin-right:10px;
     width: 150px;
 	height: 200px;
+=======
+	margin-top: 20px;
+    margin-bottom:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    width: 240px;
+	height: 350px;
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
 	display:inline-block;
 	border-radius: 25px 25px 25px 25px;
 	border-color:black;
 }
+<<<<<<< HEAD
 button[type=submit] {
 	margin-top: 30px;
     border: 0px;
@@ -92,3 +157,26 @@ button[type=submit] {
     background-size:contain;
     cursor: pointer;
 }
+=======
+
+td{
+	font: 10px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	text-align:center;
+	align-items: center;
+}
+
+img{
+	margin-bottom:25px;
+}
+
+input[type=text]{
+
+	 color: white;
+	 border: 2px solid lightblue;
+     border-radius: 4px;
+     width:100px; 
+     text-align: center;
+     margin-bottom:8px;
+}
+
+>>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
