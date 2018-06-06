@@ -416,16 +416,16 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\ManageUsers\Index.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Redactor\ArticleEditor.cshtml" />
     <Content Include="Views\Redactor\Index.cshtml" />
     <Content Include="Views\Account\UserControlPanel.cshtml" />
     <Content Include="Views\Redactor\MyArticles.cshtml" />
     <Content Include="Views\Redactor\EditArticle.cshtml" />
-=======
+
     <Content Include="Views\Home\ArticleRead.cshtml" />
->>>>>>> f3fa8086aaa2ae8471ac19578dd4c35d7f992f2d
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
