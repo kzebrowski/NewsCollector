@@ -6,13 +6,12 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using NewsCollector.Models;
-<<<<<<< HEAD
+
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-=======
->>>>>>> 52736a3f22afa3ca1d3b49aba855f06710216c79
+
+
 using NewsCollector.Models.DBOpps;
 
 namespace NewsCollector.Controllers

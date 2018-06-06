@@ -1,0 +1,13 @@
+diff a/NewsCollector/Controllers/AccountController.cs b/NewsCollector/Controllers/AccountController.cs	(rejected hunks)
+@@ -425,6 +425,11 @@
+             base.Dispose(disposing);
+         }
+ 
++        public ActionResult RedactorAccount()
++        {
++            return View();
++        }
++
+         #region Helpers
+         // Used for XSRF protection when adding external logins
+         private const string XsrfKey = "XsrfId";
