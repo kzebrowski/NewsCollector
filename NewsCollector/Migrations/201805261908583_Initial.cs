@@ -12,7 +12,7 @@ namespace NewsCollector.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        AuthorId = c.Int(nullable: false),
+                        AuthorId = c.Guid(nullable: false),
                         Title = c.String(nullable: false),
                         LeadingParagraph = c.String(nullable: false),
                         Body = c.String(nullable: false),
