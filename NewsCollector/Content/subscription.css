@@ -1,0 +1,108 @@
+
+body {
+	background-image: url("http://gdurl.com/csAF");
+	background-size:cover;
+}
+
+#title{
+	margin-top: 60px;
+	font: 50px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	color:white;
+	text-align:center;
+}
+
+#subtitle{
+	margin-top: 10px;
+	font: 30px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	color:white;
+	text-align:center;
+}
+
+#title2{
+	padding-top: 20px;
+	margin-bottom: 20px;
+	font: 40px 'Lucida Sans Unicode';
+	color:black;
+	text-align:center;
+}
+#price{
+	margin-bottom:30px;
+	font: 25px 'Lucida Sans Unicode';
+}
+
+.mainContainer{
+	
+	margin-top: 50px;
+	background:transparent;
+	width: auto;
+	height: auto;
+	flex-wrap: wrap;
+	text-align:center;
+	align-items: center;
+	justify-content: center;
+
+
+}
+.container1mSub{
+	background:white;
+	margin-top: 20px;
+    margin-bottom:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    width: 240px;
+	height: 350px;
+	display:inline-block;
+	border-radius: 25px 25px 25px 25px;
+	border-color:black;
+	
+	
+}
+
+.container3mSub{
+
+	background:white;
+	margin-top: 20px;
+    margin-bottom:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    width: 240px;
+	height: 350px;
+	display:inline-block;
+	border-radius: 25px 25px 25px 25px;
+	border-color:black;
+}
+
+.container6mSub{
+
+	background:white;
+	margin-top: 20px;
+    margin-bottom:20px;
+    margin-left: 20px;
+    margin-right:20px;
+    width: 240px;
+	height: 350px;
+	display:inline-block;
+	border-radius: 25px 25px 25px 25px;
+	border-color:black;
+}
+
+td{
+	font: 10px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+	text-align:center;
+	align-items: center;
+}
+
+img{
+	margin-bottom:25px;
+}
+
+input[type=text]{
+
+	 color: white;
+	 border: 2px solid lightblue;
+     border-radius: 4px;
+     width:100px; 
+     text-align: center;
+     margin-bottom:8px;
+}
+
