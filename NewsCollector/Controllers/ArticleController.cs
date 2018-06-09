@@ -47,7 +47,7 @@ namespace NewsCollector.Controllers
             ArticleModel articleModel = new ArticleModel
             {
                 Id = Guid.NewGuid(),
-                AuthorId = new Guid(userIdValue),
+                AuthorId = userIdValue,
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content
@@ -83,7 +83,7 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
-                AuthorId = new Guid(userIdValue)
+                AuthorId = userIdValue
             };
 
             _articleDBOpps.ModifiyArticle(modified);

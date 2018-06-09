@@ -13,8 +13,7 @@ namespace NewsCollector
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            createRolesandUsers();
-          //  AddNewArticle();
+            createRolesandUsers();            
         }
 
         // In this method we will create default User roles and Admin user for login   
@@ -49,6 +48,8 @@ namespace NewsCollector
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Admin");
                 }
+
+                AddNewArticle(user);
             }
 
             // creating Creating Redactor role    
@@ -72,6 +73,11 @@ namespace NewsCollector
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Redactor");
                 }
+
+                AddNewArticle(user);
+                AddNewArticle(user);
+                AddNewArticle(user);
+                AddNewArticle(user);
             }
 
             // creating Creating Regular role    
@@ -122,34 +128,34 @@ namespace NewsCollector
                 }
             }
         }
-        public void AddNewArticle()
+        public void AddNewArticle(ApplicationUser user)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var art = new ArticleModel();
-            art.Id = Guid.NewGuid();
-            art.AuthorId = new Guid();
-            art.Title = "Lorem ipsum dolor sit amet, est constituto consequuntur te, wisi sed.";
-            art.LeadingParagraph = "Ne quis inermis perpetua duo, vel ex noster habemus intellegat. Ut quo libris ceteros scriptorem, vis ex minim commune offendit, vim ex propriae omnesque percipit. Sea homero ornatus cu. Perpetua maiestatis definitiones eu quo.";
-            art.Body = "Id illud aeque quodsi qui, probo definitiones conclusionemque te has, eu has invidunt inimicus delicatissimi. Sea et vero idque verterem, ne vis vitae doming semper. Et porro volumus salutatus usu. Duis sonet adolescens te pri, case complectitur ius an. Eu nam agam tantas mucius. Est eius suscipiantur eu, eos ad cibo elaboraret, te explicari consectetuer comprehensam has." +
-             " Ut per porro doctus eligendi. Cu fuisset suavitate ius, ne cum purto justo nostro. Vix duis fabulas intellegat ad, ex his tale epicuri voluptatibus.Usu in meis dictas. Mel habemus molestie id, quando appetere mea ut. Mei offendit facilisi mandamus te, diam fuisset ne mea, nec at ludus homero recteque.Vis sonet referrentur id, ius aliquip minimum ex, vis ad stet menandri. Brute moderatius consectetuer nec ea, solet cetero option quo ex.Eam ei veniam tamquam. Nihil ornatus qui ex, eu quis movet mollis sit. Eam cu saepe consulatu." +
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var art = new ArticleModel();
+                art.Id = Guid.NewGuid();
+                art.AuthorId = user.Id;
+                art.Title = "Lorem ipsum dolor sit amet, est constituto consequuntur te, wisi sed.";
+                art.LeadingParagraph = "Ne quis inermis perpetua duo, vel ex noster habemus intellegat. Ut quo libris ceteros scriptorem, vis ex minim commune offendit, vim ex propriae omnesque percipit. Sea homero ornatus cu. Perpetua maiestatis definitiones eu quo.";
+                art.Body = "Id illud aeque quodsi qui, probo definitiones conclusionemque te has, eu has invidunt inimicus delicatissimi. Sea et vero idque verterem, ne vis vitae doming semper. Et porro volumus salutatus usu. Duis sonet adolescens te pri, case complectitur ius an. Eu nam agam tantas mucius. Est eius suscipiantur eu, eos ad cibo elaboraret, te explicari consectetuer comprehensam has." +
+                 " Ut per porro doctus eligendi. Cu fuisset suavitate ius, ne cum purto justo nostro. Vix duis fabulas intellegat ad, ex his tale epicuri voluptatibus.Usu in meis dictas. Mel habemus molestie id, quando appetere mea ut. Mei offendit facilisi mandamus te, diam fuisset ne mea, nec at ludus homero recteque.Vis sonet referrentur id, ius aliquip minimum ex, vis ad stet menandri. Brute moderatius consectetuer nec ea, solet cetero option quo ex.Eam ei veniam tamquam. Nihil ornatus qui ex, eu quis movet mollis sit. Eam cu saepe consulatu." +
 
-             "No duis exerci quaestio eam, hinc iusto omittantur id eam. Ei vix prompta commune, decore habemus expetendis no cum. In alia dolores mea. Eam cu inani virtute. Eos legere nostrum ea, ea qui delenit facilisi." +
+                 "No duis exerci quaestio eam, hinc iusto omittantur id eam. Ei vix prompta commune, decore habemus expetendis no cum. In alia dolores mea. Eam cu inani virtute. Eos legere nostrum ea, ea qui delenit facilisi." +
 
-           " Elitr lucilius voluptatum vim an, ne his aliquando vulputate.Pro cu explicari gloriatur, et pro inani nostro, ludus soluta dolorum ex pro.Tota solum laboramus cu vel, an ius utamur viderer, omnes placerat qualisque vel no. Ex mei tation veniam pertinax, saepe epicurei oportere his id.Erant soleat noluisse ad pro, nam no quidam accusamus consequat." +
+               " Elitr lucilius voluptatum vim an, ne his aliquando vulputate.Pro cu explicari gloriatur, et pro inani nostro, ludus soluta dolorum ex pro.Tota solum laboramus cu vel, an ius utamur viderer, omnes placerat qualisque vel no. Ex mei tation veniam pertinax, saepe epicurei oportere his id.Erant soleat noluisse ad pro, nam no quidam accusamus consequat." +
 
-            "Ut velit possit probatus sea. An suscipit delicatissimi his. Ne assum necessitatibus sed, pro no persius expetenda constituto. Eu qui oblique equidem, nibh impetus oblique ne sed. Vix et sint illud falli, eruditi deleniti at vel." +
+                "Ut velit possit probatus sea. An suscipit delicatissimi his. Ne assum necessitatibus sed, pro no persius expetenda constituto. Eu qui oblique equidem, nibh impetus oblique ne sed. Vix et sint illud falli, eruditi deleniti at vel." +
 
-           "Id pro nulla tamquam labitur. Cu vel quis dicat, ut viderer malorum vix.Has ubique dissentiet definitionem cu.Iusto reformidans an quo, quando concludaturque duo in, percipit omittantur nec no." +
+               "Id pro nulla tamquam labitur. Cu vel quis dicat, ut viderer malorum vix.Has ubique dissentiet definitionem cu.Iusto reformidans an quo, quando concludaturque duo in, percipit omittantur nec no." +
 
-            "Ex duo paulo consul persecuti, labores albucius convenire an his, dicunt verterem eu eam.Rebum utroque posidonium ea sit, has te meis harum numquam.Nostro facilis has ei. Eos et putant explicari. Vim malis oratio ornatus ex, eirmod diceret constituam ei sit." +
+                "Ex duo paulo consul persecuti, labores albucius convenire an his, dicunt verterem eu eam.Rebum utroque posidonium ea sit, has te meis harum numquam.Nostro facilis has ei. Eos et putant explicari. Vim malis oratio ornatus ex, eirmod diceret constituam ei sit." +
 
-            "Te usu utamur latine, his error malorum an. Ius dicta delicata cu, at omnes salutandi cum, te dicit virtute definitiones eos.Ignota erroribus quo ei, pri case sapientem cu, duis ridens per te.Sed saepe postea ceteros an, mea ei modus graece, ei has stet petentium.Affert delenit corrumpit mea ea." +
+                "Te usu utamur latine, his error malorum an. Ius dicta delicata cu, at omnes salutandi cum, te dicit virtute definitiones eos.Ignota erroribus quo ei, pri case sapientem cu, duis ridens per te.Sed saepe postea ceteros an, mea ei modus graece, ei has stet petentium.Affert delenit corrumpit mea ea." +
 
-            "Movet placerat cu usu, nostrud delicatissimi an pri. Ex sonet nonumy per, ne lorem soluta alienum est. Oratio philosophia duo ei, ludus oporteat ius an, vix eu primis fuisset pertinax.Id nostrum antiopam vis, qui dico minim deseruisse ne.";
-            db.articles.Add(art);
-            db.SaveChanges();
-
-
+                "Movet placerat cu usu, nostrud delicatissimi an pri. Ex sonet nonumy per, ne lorem soluta alienum est. Oratio philosophia duo ei, ludus oporteat ius an, vix eu primis fuisset pertinax.Id nostrum antiopam vis, qui dico minim deseruisse ne.";
+                db.articles.Add(art);
+                db.SaveChanges();
+            }
         }
     }
 }
