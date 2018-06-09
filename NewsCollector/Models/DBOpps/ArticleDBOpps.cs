@@ -112,7 +112,7 @@ namespace NewsCollector.Models.DBOpps
             }
         }
 
-        public IList<ArticleModel> GetArticlesForRedactor(Guid redacorId)
+        public IList<ArticleModel> GetArticlesForRedactor(string redacorId)
         {
             using (Articles = ApplicationDbContext.Create())
             {

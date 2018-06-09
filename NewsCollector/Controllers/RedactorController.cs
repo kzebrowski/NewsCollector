@@ -34,7 +34,7 @@ namespace NewsCollector.Controllers
             var userIdValue = userIdClaim.Value;
 
 
-            var articles = _articleDBOpps.GetArticlesForRedactor(new Guid(userIdValue));
+            var articles = _articleDBOpps.GetArticlesForRedactor(userIdValue);
             List<ArticleBrowsingViewModel> model = new List<ArticleBrowsingViewModel>();
 
             foreach(var article in articles)

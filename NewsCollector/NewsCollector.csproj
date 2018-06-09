@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201806061819515_Initial.Designer.cs">
       <DependentUpon>201806061819515_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806091851306_AuthorId fix.cs" />
+    <Compile Include="Migrations\201806091851306_AuthorId fix.Designer.cs">
+      <DependentUpon>201806091851306_AuthorId fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806091907492_Author Fix.cs" />
+    <Compile Include="Migrations\201806091907492_Author Fix.Designer.cs">
+      <DependentUpon>201806091907492_Author Fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ArticleBrowsingViewModel.cs" />
@@ -416,16 +424,13 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\ManageUsers\Index.cshtml" />
-
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Redactor\ArticleEditor.cshtml" />
     <Content Include="Views\Redactor\Index.cshtml" />
     <Content Include="Views\Account\UserControlPanel.cshtml" />
     <Content Include="Views\Redactor\MyArticles.cshtml" />
     <Content Include="Views\Redactor\EditArticle.cshtml" />
-
     <Content Include="Views\Home\ArticleRead.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -444,6 +449,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806061819515_Initial.resx">
       <DependentUpon>201806061819515_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806091851306_AuthorId fix.resx">
+      <DependentUpon>201806091851306_AuthorId fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806091907492_Author Fix.resx">
+      <DependentUpon>201806091907492_Author Fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
