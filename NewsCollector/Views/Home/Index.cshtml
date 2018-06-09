@@ -1,22 +1,16 @@
-﻿el IEnumerable<NewsCollector.Models.ArticleModel>
-    @using NewsCollector.Models;
-    @{
-                    /**/
-
-                    ViewBag.Title = "Przegląd internetowy";
-    }
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css")">
-    <div style="font-family:Arial">
-        @{
-            ViewBag.Title = "Przegląd internetowy";
-        }
-
-        <h2>Artykuły</h2>
-        <ul>
-            @foreach (ArticleModel article in @Model)
-            {
-                <li><h3>@Html.ActionLink(article.Title, "ArticleRead", new { id = article.Id })</h3></li>
-            }
-        </ul>
-    </div>
-
+﻿@using NewsCollector.Models;
+@{
+    ViewBag.Title = "Przegląd internetowy";
+}
+@{
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+}

@@ -317,6 +317,11 @@
     <Content Include="Content\article.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\general.css" />
+    <Content Include="Content\images\cat.jpg" />
+    <Content Include="Content\images\logowhite2.png" />
+    <Content Include="Content\index.css" />
+    <Content Include="Content\particles-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -330,6 +335,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\particles.js-master\.gitignore" />
+    <Content Include="Scripts\particles.js-master\demo\css\style.css" />
+    <Content Include="Scripts\particles.js-master\demo\index.html" />
+    <Content Include="Scripts\particles.js-master\demo\js\app.js" />
+    <Content Include="Scripts\particles.js-master\demo\js\lib\stats.js" />
+    <Content Include="Scripts\particles.js-master\particles.js" />
+    <Content Include="Scripts\particles\app.js" />
+    <Content Include="Scripts\particles\particles.js" />
     <Content Include="Website\articles.html" />
     <Content Include="Website\images\cat.jpg" />
     <Content Include="Website\images\logowhite2.png" />
@@ -416,16 +429,20 @@
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\ManageUsers\Index.cshtml" />
-
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Redactor\ArticleEditor.cshtml" />
     <Content Include="Views\Redactor\Index.cshtml" />
     <Content Include="Views\Account\UserControlPanel.cshtml" />
     <Content Include="Views\Redactor\MyArticles.cshtml" />
     <Content Include="Views\Redactor\EditArticle.cshtml" />
-
     <Content Include="Views\Home\ArticleRead.cshtml" />
-
+    <Content Include="Scripts\particles.js-master\bower.json" />
+    <Content Include="Scripts\particles.js-master\demo\particles.json" />
+    <Content Include="Scripts\particles.js-master\LICENSE.md" />
+    <Content Include="Scripts\particles.js-master\package.json" />
+    <Content Include="Scripts\particles.js-master\particlesjs-config.json" />
+    <Content Include="Scripts\particles.js-master\README.md" />
+    <Content Include="Views\Shared\_articlePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
