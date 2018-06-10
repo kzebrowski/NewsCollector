@@ -1,20 +1,9 @@
 a
 {
-   /*color: #0000FF;*/
-  color: #f7f7f7;
   text-decoration: none;
-}
-a:visited
-{
-   /*color: #800080;*/
-}
-a:active
-{
-   /*color: #FF0000;*/
 }
 a:hover
 {
-   /*color: #0000FF;*/
    text-decoration: none;
 }
 input

@@ -129,8 +129,12 @@ body {
     padding: 15px;
 }
 
+.iframe:hover {     
+    cursor: pointer;
+}
+
 .article {
-    font-size:16px;
+    font-size: 16px;
     color: black;
     text-align: justify;
     margin: 0;
