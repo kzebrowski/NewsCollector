@@ -23,7 +23,12 @@ namespace NewsCollector.Controllers
         public ActionResult Article(Guid id)
         {
             ArticleModel article =_articleDBOpps.GetArticles("Id", id.ToString()).First();
-            CreateArticleViewModel model = new CreateArticleViewModel
+            
+            if (article == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            ArticleViewModel model = new ArticleViewModel
             {
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph,
@@ -55,7 +60,7 @@ namespace NewsCollector.Controllers
 
             _articleDBOpps.AddArticle(articleModel);
 
-            return Json("success");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
         
         [HttpPost]
@@ -63,7 +68,7 @@ namespace NewsCollector.Controllers
         {
             _articleDBOpps.RemoveArticle(new Guid(id));
 
-            return Json("done");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         [HttpPost]

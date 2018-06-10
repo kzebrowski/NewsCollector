@@ -1,9 +1,11 @@
-﻿.articleTitle{
-    display:block;
-    margin-top:30px;
-    margin-left:20px;
-    margin-right:20px;
-    text-align:justify;
+﻿.articleTitle {
+
+    display: block;
+    text-align: justify;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .articlePicture{
@@ -16,11 +18,12 @@
     background-size:cover;
 }
 
-.leadParagraph{
-    display:block;
-    width:95%;
-    margin:auto;
-    text-align:justify;
+.leadParagraph {
+    display: block;
+    width: 95%;
+    text-align: justify;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .articleContent{
@@ -35,4 +38,7 @@
 }
 .articleContent p{
     margin-top:23px;
+}
+.article-div {
+    background-image: linear-gradient(to right bottom, #ffffff, #f7f7f7, #efefef, #e8e8e8, #e0e0e0);
 }

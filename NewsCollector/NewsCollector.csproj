@@ -229,8 +229,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ArticleBrowsingViewModel.cs" />
     <Compile Include="Models\ArticleModel.cs" />
-    <Compile Include="Models\ModifyArticleViewModel.cs" />
     <Compile Include="Models\CreateArticleViewModel.cs" />
+    <Compile Include="Models\ModifyArticleViewModel.cs" />
+    <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\CWDFileAppender.cs" />
     <Compile Include="Models\DBOpps\ArticleDBOpps.cs" />
     <Compile Include="Models\DBOpps\UserDBOpps.cs" />
@@ -325,6 +326,14 @@
     <Content Include="Content\article.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\general.css" />
+    <Content Include="Content\images\cat.jpg" />
+    <Content Include="Content\images\logowhite2.png" />
+    <Content Include="Content\index.css" />
+    <Content Include="Content\particles-style.css" />
+    <Content Include="Content\signIn.css" />
+    <Content Include="Content\signUp.css" />
+    <Content Include="Content\subscription.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -338,6 +347,17 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\navbar.js" />
+    <Content Include="Scripts\particles.js-master\.gitignore" />
+    <Content Include="Scripts\particles.js-master\demo\css\style.css" />
+    <Content Include="Scripts\particles.js-master\demo\index.html" />
+    <Content Include="Scripts\particles.js-master\demo\js\app.js" />
+    <Content Include="Scripts\particles.js-master\demo\js\lib\stats.js" />
+    <Content Include="Scripts\particles.js-master\particles.js" />
+    <Content Include="Scripts\particles\app.js" />
+    <Content Include="Scripts\particles\particles.js" />
+    <Content Include="Views\Home\descriptionPageBack.jpg" />
+    <Content Include="Views\Home\logo.png" />
     <Content Include="Website\articles.html" />
     <Content Include="Website\images\cat.jpg" />
     <Content Include="Website\images\logowhite2.png" />
@@ -431,6 +451,14 @@
     <Content Include="Views\Redactor\MyArticles.cshtml" />
     <Content Include="Views\Redactor\EditArticle.cshtml" />
     <Content Include="Views\Home\ArticleRead.cshtml" />
+    <Content Include="Scripts\particles.js-master\bower.json" />
+    <Content Include="Scripts\particles.js-master\demo\particles.json" />
+    <Content Include="Scripts\particles.js-master\LICENSE.md" />
+    <Content Include="Scripts\particles.js-master\package.json" />
+    <Content Include="Scripts\particles.js-master\particlesjs-config.json" />
+    <Content Include="Scripts\particles.js-master\README.md" />
+    <Content Include="Views\Home\subscription.cshtml" />
+    <Content Include="Views\Shared\_articlePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
