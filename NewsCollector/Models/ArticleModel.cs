@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,9 +21,9 @@ namespace NewsCollector.Models
         public string LeadingParagraph { get; set; }        
         [Required]
         public string Body { get; set; }
-        
-        //! Now its a path to the image, later will probably change
-        public string ImagePath { get; set; }
+
+        //! This byte array will be converted into an image when retrieving the article
+        public byte[] Image { get; set; }
 
     }
 }

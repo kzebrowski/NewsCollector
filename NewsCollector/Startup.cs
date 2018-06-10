@@ -68,7 +68,7 @@ namespace NewsCollector
 
                 var chkUser = UserManager.Create(user, userPWD);
 
-                //Add default User to Role Redactor   
+                //Add default User to Role Redactor
                 if (chkUser.Succeeded)
                 {
                     var result1 = UserManager.AddToRole(user.Id, "Redactor");

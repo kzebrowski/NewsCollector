@@ -213,17 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806061819515_Initial.cs" />
-    <Compile Include="Migrations\201806061819515_Initial.Designer.cs">
-      <DependentUpon>201806061819515_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806091851306_AuthorId fix.cs" />
-    <Compile Include="Migrations\201806091851306_AuthorId fix.Designer.cs">
-      <DependentUpon>201806091851306_AuthorId fix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806091907492_Author Fix.cs" />
-    <Compile Include="Migrations\201806091907492_Author Fix.Designer.cs">
-      <DependentUpon>201806091907492_Author Fix.cs</DependentUpon>
+    <Compile Include="Migrations\201806092022583_Initial.cs" />
+    <Compile Include="Migrations\201806092022583_Initial.Designer.cs">
+      <DependentUpon>201806092022583_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -447,14 +439,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806061819515_Initial.resx">
-      <DependentUpon>201806061819515_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806091851306_AuthorId fix.resx">
-      <DependentUpon>201806091851306_AuthorId fix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806091907492_Author Fix.resx">
-      <DependentUpon>201806091907492_Author Fix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806092022583_Initial.resx">
+      <DependentUpon>201806092022583_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
