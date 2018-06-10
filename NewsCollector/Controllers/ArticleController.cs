@@ -26,8 +26,7 @@ namespace NewsCollector.Controllers
             {
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph,
-                Content = article.Body,
-                Image = byteArrayToImage(article.Image)
+                Content = article.Body
             };
             
             return View(model);
