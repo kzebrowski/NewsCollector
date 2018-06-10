@@ -10,13 +10,14 @@ using Microsoft.AspNet.Identity;
 
 namespace NewsCollector.Controllers
 {
-    public class ManageUsersController : Controller
+    public class AdminController : Controller
     {
 
         ApplicationDbContext context;
         UserDBOpps userDBOpps;
-        
-        public ManageUsersController()
+        ArticleDBOpps articleDBOpps;
+
+        public AdminController()
         {
             context = new ApplicationDbContext();
             userDBOpps = new UserDBOpps();
@@ -68,8 +69,8 @@ namespace NewsCollector.Controllers
             return usersWithRoles;
         }
 
-        // GET: ManageUsers
-        public ActionResult Index()
+        // GET: Admin/ManageUsers
+        public ActionResult ManageUsers()
         {
             var usersWithRoles = (from user in context.Users
                                   select new
@@ -91,6 +92,14 @@ namespace NewsCollector.Controllers
 
 
             return View(usersWithRoles);
+        }
+
+        // GET: Admin/ManageArticles
+        public ActionResult ManageArticles()
+        {
+            var articles = articleDBOpps.GetAllArticles();
+            
+            return View(articles);
         }
     }
 }

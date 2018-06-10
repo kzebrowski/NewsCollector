@@ -7,13 +7,13 @@ namespace NewsCollector.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AuthorIdfix : IMigrationMetadata
+    public sealed partial class ArticleUpdate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AuthorIdfix));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ArticleUpdate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806091851306_AuthorId fix"; }
+            get { return "201806101057048_Article Update"; }
         }
         
         string IMigrationMetadata.Source

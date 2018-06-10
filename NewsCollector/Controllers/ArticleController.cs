@@ -3,16 +3,10 @@ using System.Linq;
 using System.Net;
 using System.Security.Claims;
 using System.Web.Mvc;
-using System.Web.Security;
-using Microsoft.AspNet.Identity;
 using NewsCollector.Models;
-
-using Newtonsoft.Json;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-
 using NewsCollector.Models.DBOpps;
+using System.IO;
+using System.Drawing;
 
 namespace NewsCollector.Controllers
 {
@@ -32,7 +26,8 @@ namespace NewsCollector.Controllers
             {
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph,
-                Content = article.Body
+                Content = article.Body,
+                Image = byteArrayToImage(article.Image)
             };
             
             return View(model);
@@ -55,7 +50,8 @@ namespace NewsCollector.Controllers
                 AuthorId = userIdValue,
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
-                Body = article.Content
+                Body = article.Content,
+                Image = imageToByteArray(article.Image)
             };
 
             _articleDBOpps.AddArticle(articleModel);
@@ -88,12 +84,31 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
-                AuthorId = userIdValue
+                AuthorId = userIdValue,
+                Image = imageToByteArray(article.Image)
             };
 
             _articleDBOpps.ModifiyArticle(modified);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
+
+        //! Use the following methods to save and retrieve images.
+        //! To save an image use the first method, to retrieve use the second one.
+
+        public byte[] imageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
     }
 }
