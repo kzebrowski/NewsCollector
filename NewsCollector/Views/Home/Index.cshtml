@@ -1,16 +1,10 @@
 ﻿@using NewsCollector.Models;
+@model IList<NewsCollector.Models.ArticleViewModel>
 @{
     ViewBag.Title = "Przegląd internetowy";
 }
 @{
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
-    Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml");
+    foreach (var article in Model) {
+        Html.RenderPartial("~/Views/Shared/_articlePartial.cshtml", article);
+    }
 }

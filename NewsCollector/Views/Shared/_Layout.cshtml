@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/scripts/navbar.js"></script>
     <link href="~/Content/particles-style.css" rel="stylesheet">
     <link href="~/Content/index.css" rel="stylesheet">
     <link href="~/Content/general.css" rel="stylesheet">
@@ -29,7 +30,7 @@
     <div id="particles-js"><canvas class="particles-js-canvas-el" width="841" height="974" style="width: 100%; height: 100%;"></canvas></div>
 
     <div id="logo">
-        <a href="index.html">
+        <a href="@Url.Action("Index","Home")">
             <img src="~/Content/images/logowhite2.png">
         </a>
     </div>
@@ -40,10 +41,10 @@
             <div class="button-container">
 
                 <!--MENU BUTTONS -->
-                <div class="button" id="btnArt" onclick="goSS('articles.html')">artykuły</div>
-                <div class="button" id="btnSub" onclick="goSS('subscription.html')">subskrybcja</div>
+                <div class="button" id="btnArt">artykuły</div>
+                <div class="button" id="btnSub">subskrybcja</div>
                 <!-- <div class="button" id="btnAbo" onclick="goSS('about.html')">o redakcji</div> -->
-                <div class="button" id="btnLog" onclick="goSS('login.html')">zaloguj się</div>
+                <div class="button" id="btnLog">zaloguj się</div>
             </div>
         </div>
         <!-- LEFT GRID -->
@@ -57,7 +58,6 @@
         <!-- RIGHT GRID -->
         <div class="grid-right"></div>
     </div>
-    <script>function goSS(addr) { document.getElementById("frame").src = addr; }</script>
     <script src="scripts/particles/particles.js"></script>
     <script src="scripts/particles/app.js"></script>
 </body>

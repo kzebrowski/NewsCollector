@@ -7,7 +7,6 @@ using NewsCollector.Models;
 using NewsCollector.Models.DBOpps;
 using System.IO;
 using System.Drawing;
-using System.Threading.Tasks;
 
 namespace NewsCollector.Controllers
 {
@@ -18,19 +17,23 @@ namespace NewsCollector.Controllers
         public ActionResult Article(Guid id)
         {
             ArticleModel article =_articleDBOpps.GetArticles("Id", id.ToString()).First();
-            CreateArticleViewModel model = new CreateArticleViewModel
+            
+            if (article == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            ArticleViewModel model = new ArticleViewModel
             {
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph,
-                Content = article.Body,
-                //Image = byteArrayToImage(article.Image)
+                Content = article.Body
             };
             
             return View(model);
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateArticle(CreateArticleViewModel article)
+        public ActionResult CreateArticle(CreateArticleViewModel article)
         {   
             var claimsIdentity = User.Identity as ClaimsIdentity;
 
@@ -47,24 +50,24 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content,
-                //Image = imageToByteArray(Image.FromFile(article.ImagePath))
+                Image = imageToByteArray(article.Image)
             };
 
-            await _articleDBOpps.AddArticle(articleModel);
+            _articleDBOpps.AddArticle(articleModel);
 
-            return Json("success");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
         
         [HttpPost]
-        public async Task<ActionResult> Delete(string id)
+        public ActionResult Delete(string id)
         {
-            await _articleDBOpps.RemoveArticle(new Guid(id));
+            _articleDBOpps.RemoveArticle(new Guid(id));
 
-            return Json("done");
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Update(ModifyArticleViewModel article)
+        public ActionResult Update(ModifyArticleViewModel article)
         {
             var claimsIdentity = User.Identity as ClaimsIdentity;
 
@@ -81,10 +84,10 @@ namespace NewsCollector.Controllers
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
                 AuthorId = userIdValue,
-                //Image = imageToByteArray(Image.FromFile(article.ImagePath))
+                Image = imageToByteArray(article.Image)
             };
 
-            await _articleDBOpps.ModifiyArticle(modified);
+            _articleDBOpps.ModifiyArticle(modified);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }

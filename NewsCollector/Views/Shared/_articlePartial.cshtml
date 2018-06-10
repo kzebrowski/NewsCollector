@@ -1,9 +1,9 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
+@model NewsCollector.Models.ArticleViewModel
 
-<div id="frame" class="article iframe">
+<div class="article iframe" data-link="/Article/Article/@Model.Id">
     <div style="background: transparent; width: auto;overflow: hidden;">
         <div style="width: 5%;max-height: 300px; ">
             <img src="https://images.unsplash.com/photo-1453282716202-de94e528067c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1600&h=900&fit=crop&s=c246cb5aaf5dcabd0afc187e36b4212c" style=" object-fit: cover;">
@@ -11,20 +11,14 @@
         <div class="article">
 
             <div class="text">
-                <h1 style="background-color: rgba(195, 195, 195, 0.8);">Lorem ipsum dolor sit amet</h1>
+                <h1 style="background-color: rgba(195, 195, 195, 0.8);">@Model.Title</h1>
                 <br>
                 <br>
-                <h5 style="background-color: rgba(195, 195, 195, 0.8);">Consectetur adipiscing elit. Duis malesuada ultricies augue, id fermentum dolor. In et efficitur diam, eu gravida quam. Proin mauris dui, lobortis a tortor sed, tempus pharetra risus. Quisque gravida elit ut justo maximus, eget euismod justo dignissim. Phasellus feugiat vulputate dolor. Donec metus enim, efficitur eget risus id, elementum suscipit urna. Nulla nec neque eleifend, molestie leo ac, laoreet ipsum. Proin finibus sagittis accumsan.</h5>
+                <h5 style="background-color: rgba(195, 195, 195, 0.8);">@Model.LeadParagraph</h5>
                 <br>
                 <br>
                 <p style="background-color: rgba(195, 195, 195, 1);">
-                    Nam eget lacinia arcu. Integer ullamcorper egestas sapien nec mollis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In semper, lacus sed tempor efficitur, nisl ligula lacinia ipsum, et suscipit libero massa id dolor. Donec iaculis mi nec lectus laoreet, et posuere lorem posuere. Nulla facilisi. Aliquam justo dui, finibus et pharetra a, finibus vel orci. Integer rhoncus eget lorem ut lacinia. In sit amet consectetur massa, in ornare purus. Pellentesque sed elit et erat porttitor fringilla. Praesent nisl magna, suscipit et iaculis ut, porta nec nisi. Cras ultricies ex ac ipsum ultricies rhoncus.
-
-                    Vivamus quis felis risus. Nulla efficitur tellus quis dolor maximus tristique. Proin ornare malesuada sapien non vestibulum. Aenean nisl eros, placerat id enim et, malesuada volutpat diam. Nunc ac felis euismod purus auctor dictum. Sed est augue, porttitor faucibus ante ac, finibus aliquet nisl. Vestibulum laoreet sodales tellus et maximus. In vehicula euismod erat, eu dignissim leo finibus dapibus. Nunc ullamcorper enim eget leo pellentesque consequat. Sed a vestibulum elit, nec porttitor lorem. Sed accumsan felis at nulla imperdiet auctor. Vivamus auctor pharetra mi, at vestibulum enim sollicitudin blandit. Morbi in lorem erat.
-
-                    Phasellus velit quam, ultricies eget molestie vitae, feugiat nec lacus. Maecenas varius, sem ac semper faucibus, felis turpis pretium neque, quis bibendum magna neque sed justo. Suspendisse laoreet urna arcu, eget fermentum odio faucibus elementum. Sed in semper risus. Sed eget commodo tellus, sed sollicitudin justo. Vivamus eleifend eget neque ut malesuada. Duis bibendum in risus et blandit. Aenean sit amet hendrerit enim. Fusce rhoncus sapien in arcu consectetur, sit amet luctus lectus condimentum. Nullam a quam semper, faucibus urna id, placerat massa. Pellentesque pharetra, neque in vehicula condimentum, felis turpis commodo orci, nec venenatis tortor dolor ut est.
-
-                    Phasellus ornare tempus nisi sed lobortis. Vestibulum posuere arcu ex, a faucibus risus ultricies eu. Vestibulum imperdiet auctor neque sit amet fringilla. Cras commodo varius felis. Donec imperdiet blandit ante, ac consectetur quam sollicitudin et. Vestibulum condimentum dui in nisi semper pharetra. In vitae ullamcorper velit.
+                    @Model.Content
                 </p>
             </div>
         </div>
