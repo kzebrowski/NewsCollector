@@ -9,6 +9,6 @@ namespace NewsCollector.Models
         public string Title { get; set; }
         public string LeadParagraph { get; set; }
         public string Content { get; set; }
-        public Image Image { get; set; }
+        public string ImagePath { get; set; }
     }
 }

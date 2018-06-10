@@ -7,6 +7,7 @@ using NewsCollector.Models;
 using NewsCollector.Models.DBOpps;
 using System.IO;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace NewsCollector.Controllers
 {
@@ -22,14 +23,14 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph,
                 Content = article.Body,
-                Image = byteArrayToImage(article.Image)
+                //Image = byteArrayToImage(article.Image)
             };
             
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult CreateArticle(CreateArticleViewModel article)
+        public async Task<ActionResult> CreateArticle(CreateArticleViewModel article)
         {   
             var claimsIdentity = User.Identity as ClaimsIdentity;
 
@@ -46,24 +47,24 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content,
-                Image = imageToByteArray(article.Image)
+                //Image = imageToByteArray(Image.FromFile(article.ImagePath))
             };
 
-            _articleDBOpps.AddArticle(articleModel);
+            await _articleDBOpps.AddArticle(articleModel);
 
             return Json("success");
         }
         
         [HttpPost]
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> Delete(string id)
         {
-            _articleDBOpps.RemoveArticle(new Guid(id));
+            await _articleDBOpps.RemoveArticle(new Guid(id));
 
             return Json("done");
         }
 
         [HttpPost]
-        public ActionResult Update(ModifyArticleViewModel article)
+        public async Task<ActionResult> Update(ModifyArticleViewModel article)
         {
             var claimsIdentity = User.Identity as ClaimsIdentity;
 
@@ -80,10 +81,10 @@ namespace NewsCollector.Controllers
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
                 AuthorId = userIdValue,
-                Image = imageToByteArray(article.Image)
+                //Image = imageToByteArray(Image.FromFile(article.ImagePath))
             };
 
-            _articleDBOpps.ModifiyArticle(modified);
+            await _articleDBOpps.ModifiyArticle(modified);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "AdminAccount";
+}
+
+<ul class="nav nav-pills nav-justified" role="tablist" style="margin-top:30px">
+    <li class="active"><a href="@Url.Content("~/admin/index")">Info</a></li>
+    <li><a href="@Url.Content("~/admin/manageusers")">Zarządzaj użytkownikami</a></li>
+    <li><a href="@Url.Content("~/admin/managearticles")">Zarządzaj artykułami</a></li>
+</ul>
+
+<br>
+
+    <table align="center" style="margin-top:40px">
+        <tr>
+            <td><h4>Nazwa użytkownika &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h4></td>
+            <td><h4>@ViewBag.UserName</h4></td>
+        </tr>
+        <tr>
+            <td><h4>E-mail</h4></td>
+            <td><h4>@ViewBag.UserName</h4></td>
+        </tr>
+    </table>

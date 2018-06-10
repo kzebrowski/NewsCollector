@@ -1,9 +1,5 @@
 ﻿using log4net.Appender;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 
 namespace NewsCollector.Models
 {
@@ -14,7 +10,8 @@ namespace NewsCollector.Models
             set
             {
                 string cwd = Directory.GetCurrentDirectory();
-                string newPath = Path.GetFullPath(Path.Combine(cwd, @"..\..\..\"));
+                string newPath = Path.GetFullPath(Path.Combine(cwd, @"..\"));
+
 
                 base.File = Path.Combine(newPath, value);
             }

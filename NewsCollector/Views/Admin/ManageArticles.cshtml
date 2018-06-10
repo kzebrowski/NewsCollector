@@ -1,14 +1,22 @@
-﻿@model IEnumerable<NewsCollector.Models.ArticleBrowsingViewModel>
+﻿@model IEnumerable<NewsCollector.Models.ArticleModel>
 
 @{
     ViewBag.Title = "ManageArticles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<ul class="nav nav-pills nav-justified" role="tablist" style="margin-top:30px">
+    <li class="active"><a href="@Url.Content("~/admin/index")">Info</a></li>
+    <li><a href="@Url.Content("~/admin/manageusers")">Zarządzaj użytkownikami</a></li>
+    <li><a href="@Url.Content("~/admin/managearticles")">Zarządzaj artykułami</a></li>
+</ul>
+
+<br>
+
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="box-title">
-            <b>Users</b>
+            <b>Articles</b>
         </h3>
     </div>
     <!-- /.box-header -->
@@ -16,35 +24,51 @@
         <table class="table table-hover table-bordered table-condensed" id="example1">
             <thead>
                 <tr>
-                    <td><b>Username</b></td>
-                    <td><b>Email</b></td>
-                    <td><b>Roles</b></td>
-                    <td><b>Delete</b></td>
+                    <td><b>Author</b></td>
+                    <td><b>Title</b></td>
+                    <td><b>Operation</b></td>
                 </tr>
             </thead>
             @foreach (var article in Model)
             {
                 <tr>
-                    <td>@article.</td>
-                    <td>@user.Email</td>
+                    <td>@article.Author.Email</td>
+                    <td>@article.Title</td>
                     <td>
-                        Current Role: <b>@user.Role</b> | Change to:
-                        <select onchange="ChangeRole(this);" name="@user.UserId">
-                            <option value="Regular">Regular</option>
-                            <option value="Subscriber">Subscriber</option>
-                            <option value="Redactor">Redactor</option>
-                        </select>
+                        <a onclick="Delete(this)" name=@article.Id>Delete</a>
+                         | 
+                         @Html.ActionLink("Edytuj", "EditArticle", "Admin", new { id = article.Id }, null)
                     </td>
-                    <td>
-                        <a onclick="Delete(this)" name=@user.UserId>Delete</a>
-                    </td>
-
                 </tr>
             }
         </table>
     </div>
 
     <div class="panel-footer">
-        <p class="box-title"><b>Wszystkich uzytkownikow dzisiaj: @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
+        <p class="box-title"><b>Wszystkich artykułów dzisiaj: @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        function Delete(caller) {
+
+            var articleId = caller.name;
+
+            $.ajax({
+                type: "POST",
+                url: "/Admin/DeleteArticle", // the URL of the controller action method
+                contentType: "application/json; charset=utf-8",
+                data: "{ id : " + JSON.stringify(articleId) + "}",
+                dataType: "json",
+
+                success: function (result) {
+                    location.reload();
+                },
+                error: function (req, status, error) {
+                    alert(status);
+                }
+            });
+        }
+    </script>
+}

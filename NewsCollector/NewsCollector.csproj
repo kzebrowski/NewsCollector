@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201806101057048_Article Update.Designer.cs">
       <DependentUpon>201806101057048_Article Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806101824239_Article update, creationdate.cs" />
+    <Compile Include="Migrations\201806101824239_Article update, creationdate.Designer.cs">
+      <DependentUpon>201806101824239_Article update, creationdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ArticleBrowsingViewModel.cs" />
@@ -425,10 +429,12 @@
     <Content Include="Views\Redactor\EditArticle.cshtml" />
     <Content Include="Views\Home\ArticleRead.cshtml" />
     <Content Include="Views\Admin\ManageArticles.cshtml" />
+    <Content Include="Views\Article\Article.cshtml" />
+    <Content Include="Views\Admin\EditArticle.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -447,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806101057048_Article Update.resx">
       <DependentUpon>201806101057048_Article Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806101824239_Article update, creationdate.resx">
+      <DependentUpon>201806101824239_Article update, creationdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using log4net;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace NewsCollector.Models.DBOpps
 {
@@ -60,14 +61,14 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Add's an article to DB.
-        public void AddArticle(ArticleModel article)
+        public async Task AddArticle(ArticleModel article)
         {
             using (Articles = ApplicationDbContext.Create())
             {
                 try
                 {
                     Articles.articles.Add(article);
-                    Articles.SaveChanges();
+                    await Articles.SaveChangesAsync();
                 }
                 catch (Exception e)
                 {
@@ -77,7 +78,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Modifies an article that has the same id as arugment.
-        public void ModifiyArticle(ArticleModel article)
+        public async Task ModifiyArticle(ArticleModel article)
         {
             using (Articles = ApplicationDbContext.Create())
             {
@@ -85,7 +86,7 @@ namespace NewsCollector.Models.DBOpps
                 if (original != null)
                 {
                     Articles.Entry(original).CurrentValues.SetValues(article);
-                    Articles.SaveChanges();
+                    await Articles.SaveChangesAsync();
                 }
                 else
                 {
@@ -95,7 +96,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Remove an article with set id.
-        public void RemoveArticle(Guid id)
+        public async Task RemoveArticle(Guid id)
         {
             using (Articles = ApplicationDbContext.Create())
             {
@@ -103,7 +104,7 @@ namespace NewsCollector.Models.DBOpps
                 if (result != null)
                 {
                     Articles.articles.Remove(result);
-                    Articles.SaveChanges();
+                    await Articles.SaveChangesAsync();
                 }
                 else
                 {

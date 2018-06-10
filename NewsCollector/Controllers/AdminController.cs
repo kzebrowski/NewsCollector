@@ -7,6 +7,7 @@ using NewsCollector.Models;
 using NewsCollector.Models.DBOpps;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
 
 namespace NewsCollector.Controllers
 {
@@ -21,13 +22,28 @@ namespace NewsCollector.Controllers
         {
             context = new ApplicationDbContext();
             userDBOpps = new UserDBOpps();
+            articleDBOpps = new ArticleDBOpps();
+        }
+
+        // GET: Admin
+        public ActionResult Index()
+        {
+            return View();
         }
 
         [HttpPost]
-        public ActionResult Delete(string id)
+        public async Task<ActionResult> DeleteUser(string id)
         {
-            userDBOpps.RemoveClient(id);
+            await userDBOpps.RemoveClient(id);
             
+            return Json("DONE");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> DeleteArticle(Guid id)
+        {
+            await articleDBOpps.RemoveArticle(id);
+
             return Json("DONE");
         }
 
@@ -98,8 +114,34 @@ namespace NewsCollector.Controllers
         public ActionResult ManageArticles()
         {
             var articles = articleDBOpps.GetAllArticles();
-            
-            return View(articles);
+            var users = userDBOpps.GetAllClients();
+
+            var articlesWithAuthors = (from article in articles
+                                      join user in users on article.AuthorId equals user.Id
+                                      select new ArticleModel {
+                                          Id = article.Id,
+                                          Author = user,
+                                          AuthorId = user.Id,
+                                          Title = article.Title,
+                                      }).ToList();
+
+            return View(articlesWithAuthors);
         }
+
+        // GET: Admin/EditArticle
+        public ActionResult EditArticle(string id)
+        {
+            ArticleModel article = articleDBOpps.GetArticles("Id", id).First();
+            ModifyArticleViewModel model = new ModifyArticleViewModel
+            {
+                Id = article.Id,
+                Title = article.Title,
+                LeadParagraph = article.LeadingParagraph,
+                Content = article.Body
+            };
+
+            return View(model);
+        }
+
     }
 }

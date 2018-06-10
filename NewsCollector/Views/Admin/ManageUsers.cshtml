@@ -1,9 +1,17 @@
 ﻿@model IEnumerable<NewsCollector.Models.UserViewModel>
 
-@{  
+@{
     ViewBag.Title = "ManageUsers";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<ul class="nav nav-pills nav-justified" role="tablist" style="margin-top:30px">
+    <li class="active"><a href="@Url.Content("~/admin/index")">Info</a></li>
+    <li><a href="@Url.Content("~/admin/manageusers")">Zarządzaj użytkownikami</a></li>
+    <li><a href="@Url.Content("~/admin/managearticles")">Zarządzaj artykułami</a></li>
+</ul>
+
+<br>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
@@ -28,15 +36,15 @@
                     <td>@user.Username</td>
                     <td>@user.Email</td>
                     <td>
-                        Current Role: <b>@user.Role</b> | Change to: 
-                        <select  onchange="ChangeRole(this);" name="@user.UserId">
+                        Current Role: <b>@user.Role</b> | Change to:
+                        <select onchange="ChangeRole(this);" name="@user.UserId">
                             <option value="Regular">Regular</option>
                             <option value="Subscriber">Subscriber</option>
                             <option value="Redactor">Redactor</option>
-                        </select> 
-                    </td>                        
+                        </select>
+                    </td>
                     <td>
-                        <a onclick="Delete(this)" name=@user.UserId >Delete</a>
+                        <a onclick="Delete(this)" name=@user.UserId>Delete</a>
                     </td>
 
                 </tr>
@@ -52,9 +60,7 @@
 
 @section scripts{
     <script>
-        function ChangeRole(caller)
-        {
-            alert(caller.name);
+        function ChangeRole(caller) {
 
             var userid = caller.name;
 
@@ -75,13 +81,12 @@
         }
 
         function Delete(caller) {
-            alert(caller.name);
 
             var userid = caller.name;
 
             $.ajax({
-                type: "POST",                
-                url: "/ManageUsers/Delete", // the URL of the controller action method
+                type: "POST",
+                url: "/Admin/DeleteUser", // the URL of the controller action method
                 contentType: "application/json; charset=utf-8",
                 data: "{ id : " + JSON.stringify(userid) + "}",
                 dataType: "json",

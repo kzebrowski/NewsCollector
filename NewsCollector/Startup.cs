@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using log4net;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using NewsCollector.Models;
 using Owin;
 using System;
+using System.Reflection;
 
 [assembly: OwinStartupAttribute(typeof(NewsCollector.Startup))]
 namespace NewsCollector
@@ -13,7 +15,13 @@ namespace NewsCollector
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            createRolesandUsers();            
+            log4net.Config.XmlConfigurator.Configure();
+
+            ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+            logger.Info("App is running");
+
+            createRolesandUsers();
         }
 
         // In this method we will create default User roles and Admin user for login   
@@ -135,6 +143,8 @@ namespace NewsCollector
                 var art = new ArticleModel();
                 art.Id = Guid.NewGuid();
                 art.AuthorId = user.Id;
+                art.Author = user;
+                art.AdditionDate = DateTime.UtcNow;
                 art.Title = "Lorem ipsum dolor sit amet, est constituto consequuntur te, wisi sed.";
                 art.LeadingParagraph = "Ne quis inermis perpetua duo, vel ex noster habemus intellegat. Ut quo libris ceteros scriptorem, vis ex minim commune offendit, vim ex propriae omnesque percipit. Sea homero ornatus cu. Perpetua maiestatis definitiones eu quo.";
                 art.Body = "Id illud aeque quodsi qui, probo definitiones conclusionemque te has, eu has invidunt inimicus delicatissimi. Sea et vero idque verterem, ne vis vitae doming semper. Et porro volumus salutatus usu. Duis sonet adolescens te pri, case complectitur ius an. Eu nam agam tantas mucius. Est eius suscipiantur eu, eos ad cibo elaboraret, te explicari consectetuer comprehensam has." +

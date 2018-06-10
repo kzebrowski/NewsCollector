@@ -5,6 +5,7 @@ using System.Web;
 using log4net;
 using System.Reflection;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
 
 namespace NewsCollector.Models.DBOpps
 {
@@ -62,7 +63,7 @@ namespace NewsCollector.Models.DBOpps
 
 
         //! Add's a Client to DB.
-        public void AddClient(ApplicationUser user)
+        public async Task AddClient(ApplicationUser user)
         {
 
             using (Clients = ApplicationDbContext.Create())
@@ -70,7 +71,7 @@ namespace NewsCollector.Models.DBOpps
                 try
                 {
                     Clients.Users.Add(user);
-                    Clients.SaveChanges();
+                    await Clients.SaveChangesAsync();
                 }
                 catch (Exception e)
                 {
@@ -80,7 +81,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Modifies a user that has the same id as arugment.
-        public void ModifiyClient(ApplicationUser user)
+        public async Task ModifiyClient(ApplicationUser user)
         {
             using (Clients = ApplicationDbContext.Create())
             {
@@ -88,7 +89,7 @@ namespace NewsCollector.Models.DBOpps
                 if (original != null)
                 {
                     Clients.Entry(original).CurrentValues.SetValues(user);
-                    Clients.SaveChanges();
+                    await Clients.SaveChangesAsync();
                 }
                 else
                 {
@@ -98,7 +99,7 @@ namespace NewsCollector.Models.DBOpps
         }
 
         //! Remove'a user with set id.
-        public void RemoveClient(string id)
+        public async Task RemoveClient(string id)
         {
             using (Clients = ApplicationDbContext.Create())
             {
@@ -106,7 +107,7 @@ namespace NewsCollector.Models.DBOpps
                 if (result != null)
                 {
                     Clients.Users.Remove(result);
-                    Clients.SaveChanges();
+                    await Clients.SaveChangesAsync();
                 }
                 else
                 {
