@@ -207,7 +207,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ManageUsersController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RedactorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201806092022583_Initial.cs" />
     <Compile Include="Migrations\201806092022583_Initial.Designer.cs">
       <DependentUpon>201806092022583_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806101057048_Article Update.cs" />
+    <Compile Include="Migrations\201806101057048_Article Update.Designer.cs">
+      <DependentUpon>201806101057048_Article Update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -402,8 +406,6 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Account\AdministratorView.cshtml" />
-    <Content Include="Views\Article\Article.cshtml" />
-    <Content Include="Views\Article\ArticleEditor.cshtml" />
     <Content Include="Website\scripts\particles.js-master\bower.json" />
     <Content Include="Website\scripts\particles.js-master\demo\particles.json" />
     <Content Include="Website\scripts\particles.js-master\LICENSE.md" />
@@ -415,17 +417,18 @@
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\SignUp.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\ManageUsers\Index.cshtml" />
-    <Content Include="Views\Article\Article.cshtml" />
+    <Content Include="Views\Admin\ManageUsers.cshtml" />
     <Content Include="Views\Redactor\ArticleEditor.cshtml" />
     <Content Include="Views\Redactor\Index.cshtml" />
     <Content Include="Views\Account\UserControlPanel.cshtml" />
     <Content Include="Views\Redactor\MyArticles.cshtml" />
     <Content Include="Views\Redactor\EditArticle.cshtml" />
     <Content Include="Views\Home\ArticleRead.cshtml" />
+    <Content Include="Views\Admin\ManageArticles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Article\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -441,6 +444,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806092022583_Initial.resx">
       <DependentUpon>201806092022583_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806101057048_Article Update.resx">
+      <DependentUpon>201806101057048_Article Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
