@@ -13,7 +13,7 @@ namespace NewsCollector.Controllers
         public ActionResult Index()
         {
             ApplicationDbContext newsContext = new ApplicationDbContext();
-            List<ArticleModel> articles = newsContext.articles.ToList();
+            List<ArticleModel> articles = newsContext.articles.OrderByDescending(x => x.AdditionDate).ToList();
             List<ArticleViewModel> model = articles.Select(a => new ArticleViewModel { Id = a.Id ,Title = a.Title, Content = a.Body, LeadParagraph = a.LeadingParagraph }).ToList();      
 
             return View(model);
