@@ -428,7 +428,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Account\AdministratorView.cshtml" />
     <Content Include="Website\scripts\particles.js-master\bower.json" />
     <Content Include="Website\scripts\particles.js-master\demo\particles.json" />
@@ -447,7 +446,6 @@
     <Content Include="Views\Account\UserControlPanel.cshtml" />
     <Content Include="Views\Redactor\MyArticles.cshtml" />
     <Content Include="Views\Redactor\EditArticle.cshtml" />
-    <Content Include="Views\Home\ArticleRead.cshtml" />
     <Content Include="Scripts\particles.js-master\bower.json" />
     <Content Include="Scripts\particles.js-master\demo\particles.json" />
     <Content Include="Scripts\particles.js-master\LICENSE.md" />

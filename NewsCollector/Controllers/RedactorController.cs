@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace NewsCollector.Controllers
 {
-    [Authorize]
+    [Authorize (Roles = "Redactor,Admin")]
     public class RedactorController : Controller
     {
         private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();

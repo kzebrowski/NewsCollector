@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace NewsCollector.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
 

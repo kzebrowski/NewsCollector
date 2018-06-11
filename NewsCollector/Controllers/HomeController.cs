@@ -3,7 +3,6 @@ using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NewsCollector.Controllers
@@ -14,18 +13,14 @@ namespace NewsCollector.Controllers
         {
             ApplicationDbContext newsContext = new ApplicationDbContext();
             List<ArticleModel> articles = newsContext.articles.OrderByDescending(x => x.AdditionDate).ToList();
-            List<ArticleViewModel> model = articles.Select(a => new ArticleViewModel { Id = a.Id ,Title = a.Title, Content = a.Body, LeadParagraph = a.LeadingParagraph }).ToList();      
+            List<ArticleViewModel> model;
+
+           
+            model = articles.Select(a => new ArticleViewModel { Id = a.Id, Title = a.Title, Content = a.Body.Length>=400? a.Body.Substring(0,400)+"...": a.Body, LeadParagraph = a.LeadingParagraph }).ToList();
 
             return View(model);
         }
-
-        public ActionResult ArticleRead(Guid id)
-        {
-            ApplicationDbContext newsContext = new ApplicationDbContext();
-            ArticleModel article = newsContext.articles.Single(ar => ar.Id == id);
-
-            return View(article);
-        }
+        
         public ActionResult ExportPdf(Guid id)
         {
             var q = new ActionAsPdf("ArticleRead", new { id = id });
@@ -43,11 +38,6 @@ namespace NewsCollector.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
-
-        public ActionResult Article()
-        {
             return View();
         }
 
