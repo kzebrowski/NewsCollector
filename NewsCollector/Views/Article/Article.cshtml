@@ -12,7 +12,7 @@
 <div class="articlePicture" style="background-image:Url(@Model.Image)"></div>
 
 <div class="articleContent">
-    @Html.DisplayFor(model => model.Content)
+    @Html.Raw(Model.Content)
     <br /><br />
     <h3 style="color:red">@ViewBag.Message</h3>
 </div>

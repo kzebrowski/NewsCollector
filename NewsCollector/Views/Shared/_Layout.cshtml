@@ -43,10 +43,11 @@
             <div class="button-container">
 
                 <!--MENU BUTTONS -->
-                <div class="button" id="btnSub">subskrybcja</div>
                 <!-- <div class="button" id="btnAbo" onclick="goSS('about.html')">o redakcji</div> -->
                 @if (Request.IsAuthenticated)
                 {
+                    <div class="button" id="btnSub">subskrybcja</div>
+                    <div class="button" id="btnAcc">Moje konto</div>
                     <div class="button" id="btnLog">Wyloguj się</div>
                 }
                 else

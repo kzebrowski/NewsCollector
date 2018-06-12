@@ -30,6 +30,33 @@ namespace NewsCollector.Controllers
             return View();
 
         }
+        [Authorize]
+        public ActionResult MyAccount()
+        {
+            ViewBag.Name = User.Identity.Name;
+            if (User.IsInRole("Regular"))
+            {
+                ViewBag.AccountType = "Bez subskrybcji";
+                return View();
+            }
+            if (User.IsInRole("Subscriber"))
+            {
+                ViewBag.AccountType = "Subskrybent";
+                return View();
+            }
+            if (User.IsInRole("Redactor"))
+            {
+                return RedirectToAction("Index","Redactor");
+            }
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                return RedirectToAction("Index","Home");
+            }
+        }
 
         public string ReturnUserType()
         {

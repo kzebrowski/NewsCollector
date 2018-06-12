@@ -1,0 +1,41 @@
+﻿
+<body>
+    <h1 align="center">MOJE KONTO</h1>
+    <div>
+        <a href="@Url.Action("Index","Home")">powrót do sewisu</a>
+    </div>
+    <br>
+    <div>
+        <table align="center">
+            <tbody>
+                <tr>
+                    <td bgcolor="lightgrey">
+                        Login
+                    </td>
+                    <td>
+                        @ViewBag.Name
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="lightgrey">
+                        e-mail
+                    </td>
+                    <td>
+                        @ViewBag.Name
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="lightgrey">
+                        Rodzaj konta
+                    </td>
+                    <td>
+                        @ViewBag.AccountType
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+
+</body>

@@ -1,12 +1,6 @@
 ﻿
 @{
     ViewBag.Title = "CreateArticle";
-
-
-
-
-
-
 }
 
 <ul class="nav nav-pills nav-justified" role="tablist" style="margin-top:30px">
@@ -74,7 +68,7 @@
                             data: "{article: " + JSON.stringify(article) + "}",
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
-                            complete: function (response) {
+                            success: function (response) {
                                 location.replace("@Url.Content("~/Redactor/MyArticles")");
                             },
                             error: function (response) {
