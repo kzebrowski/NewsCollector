@@ -8,18 +8,17 @@ using NewsCollector.Models.DBOpps;
 using System.IO;
 using System.Drawing;
 using System.Threading.Tasks;
+using Rotativa;
 
 namespace NewsCollector.Controllers
 {   
-    [Authorize]
+    
     public class ArticleController : Controller
     {
         private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();
 
         public ActionResult Article(Guid id)
         {
-            var userController = new UserController();
-
             ArticleModel article =_articleDBOpps.GetArticles("Id", id.ToString()).First();
             
             if (article == null)
@@ -29,11 +28,15 @@ namespace NewsCollector.Controllers
 
             ArticleViewModel model = new ArticleViewModel
             {
+                Id = article.Id,
                 Title = article.Title,
-                LeadParagraph = article.LeadingParagraph
+                LeadParagraph = article.LeadingParagraph,
+                Content = article.Body,
+                AdditionDate = article.AdditionDate,
+                Image = article.Image
             };
             
-            if (User.Identity.IsAuthenticated && 
+            if (!User.Identity.IsAuthenticated || 
                 ((ClaimsIdentity)User.Identity).Claims
                     .Where(c => c.Type == ClaimTypes.Role)
                     .Select(c => c.Value).FirstOrDefault() == "Regular")
@@ -50,16 +53,47 @@ namespace NewsCollector.Controllers
             return View(model);
         }
 
+        public ActionResult ExportPdf(Guid id)
+        {
+            ArticleModel article = _articleDBOpps.GetArticles("Id", id.ToString()).First();
+
+            if (article == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            ArticleViewModel model = new ArticleViewModel
+            {
+                Title = article.Title,
+                LeadParagraph = article.LeadingParagraph
+            };
+
+            if (!User.Identity.IsAuthenticated ||
+                ((ClaimsIdentity)User.Identity).Claims
+                    .Where(c => c.Type == ClaimTypes.Role)
+                    .Select(c => c.Value).FirstOrDefault() == "Regular")
+            {
+                model.Content = article.Body.Substring(0, 400) + "...";
+                ViewBag.Message = "( ͡° ͜ʖ ͡° )つ──☆*:・ﾟAby zobaczyć pełną wersję artykułu wykup subskrybcję.";
+            }
+            else
+            {
+                model.Content = article.Body;
+                ViewBag.Message = "";
+            }
+
+            return new ViewAsPdf("Article",model);
+        }
+
         [HttpPost]
         public async Task<ActionResult> CreateArticle(CreateArticleViewModel article)
-        {   
+        {
             var claimsIdentity = User.Identity as ClaimsIdentity;
-
+            
             var userIdClaim = claimsIdentity.Claims
-                 .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
 
             var userIdValue = userIdClaim.Value;
-
 
             ArticleModel articleModel = new ArticleModel
             {
@@ -68,15 +102,16 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content,
-                AdditionDate = DateTime.UtcNow
-                //Image = imageToByteArray(article.Image)
+                AdditionDate = DateTime.UtcNow,
+                Image = article.Image
             };
 
             await _articleDBOpps.AddArticle(articleModel);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
-        
+
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
@@ -85,6 +120,7 @@ namespace NewsCollector.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Update(ModifyArticleViewModel article)
         {
@@ -95,7 +131,6 @@ namespace NewsCollector.Controllers
 
             var userIdValue = userIdClaim.Value;
 
-
             ArticleModel modified = new ArticleModel
             {
                 Id = article.Id,
@@ -103,7 +138,8 @@ namespace NewsCollector.Controllers
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
                 AuthorId = userIdValue,
-                //Image = imageToByteArray(article.Image)
+                AdditionDate = DateTime.UtcNow,
+                Image = article.Image
             };
 
             await _articleDBOpps.ModifiyArticle(modified);
@@ -116,16 +152,26 @@ namespace NewsCollector.Controllers
 
         public byte[] imageToByteArray(System.Drawing.Image imageIn)
         {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
+            if (imageIn != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                return ms.ToArray();
+            }
+
+            return null;
         }
 
         public Image byteArrayToImage(byte[] byteArrayIn)
         {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
+            if (byteArrayIn != null)
+            {
+                MemoryStream ms = new MemoryStream(byteArrayIn);
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+
+            return null;
         }
 
     }

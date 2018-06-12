@@ -58,6 +58,11 @@ namespace NewsCollector.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
