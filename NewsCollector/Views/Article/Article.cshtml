@@ -8,7 +8,7 @@
 <h1 class="articleTitle">@Html.DisplayFor(model => model.Title)</h1>
 <h3 class="lead leadParagraph">@Html.DisplayFor(model => model.LeadParagraph)</h3>
 
-<div class="articlePicture"></div>
+<div class="articlePicture" style="background-image:Url(@Model.Image)"></div>
 
 <div class="articleContent">
     @Html.DisplayFor(model => model.Content)

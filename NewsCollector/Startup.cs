@@ -144,6 +144,7 @@ namespace NewsCollector
                 art.Id = Guid.NewGuid();
                 art.AuthorId = user.Id;
                 art.Author = user;
+                art.Image = "data: image / png; base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg ==";
                 art.AdditionDate = DateTime.UtcNow;
                 art.Title = "Lorem ipsum dolor sit amet, est constituto consequuntur te, wisi sed.";
                 art.LeadingParagraph = "Ne quis inermis perpetua duo, vel ex noster habemus intellegat. Ut quo libris ceteros scriptorem, vis ex minim commune offendit, vim ex propriae omnesque percipit. Sea homero ornatus cu. Perpetua maiestatis definitiones eu quo.";

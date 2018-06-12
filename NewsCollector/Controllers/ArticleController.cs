@@ -17,8 +17,8 @@ namespace NewsCollector.Controllers
 
         public ActionResult Article(Guid id)
         {
-            ArticleModel article =_articleDBOpps.GetArticles("Id", id.ToString()).First();
-            
+            ArticleModel article = _articleDBOpps.GetArticles("Id", id.ToString()).First();
+
             if (article == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
@@ -27,22 +27,23 @@ namespace NewsCollector.Controllers
             {
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph,
-                Content = article.Body
+                Content = article.Body,
+                AdditionDate = article.AdditionDate,
+                Image = article.Image
             };
-            
+
             return View(model);
         }
 
         [HttpPost]
         public async Task<ActionResult> CreateArticle(CreateArticleViewModel article)
-        {   
+        {
             var claimsIdentity = User.Identity as ClaimsIdentity;
-
+            
             var userIdClaim = claimsIdentity.Claims
-                 .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
 
             var userIdValue = userIdClaim.Value;
-
 
             ArticleModel articleModel = new ArticleModel
             {
@@ -51,15 +52,16 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content,
-                AdditionDate = DateTime.UtcNow
-                //Image = imageToByteArray(article.Image)
+                AdditionDate = DateTime.UtcNow,
+                Image = article.Image
             };
 
             await _articleDBOpps.AddArticle(articleModel);
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
-        
+
+
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
@@ -78,7 +80,6 @@ namespace NewsCollector.Controllers
 
             var userIdValue = userIdClaim.Value;
 
-
             ArticleModel modified = new ArticleModel
             {
                 Id = article.Id,
@@ -86,7 +87,8 @@ namespace NewsCollector.Controllers
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
                 AuthorId = userIdValue,
-                //Image = imageToByteArray(article.Image)
+                AdditionDate = DateTime.UtcNow,
+                Image = article.Image
             };
 
             await _articleDBOpps.ModifiyArticle(modified);
@@ -99,16 +101,26 @@ namespace NewsCollector.Controllers
 
         public byte[] imageToByteArray(System.Drawing.Image imageIn)
         {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-            return ms.ToArray();
+            if (imageIn != null)
+            {
+                MemoryStream ms = new MemoryStream();
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                return ms.ToArray();
+            }
+
+            return null;
         }
 
         public Image byteArrayToImage(byte[] byteArrayIn)
         {
-            MemoryStream ms = new MemoryStream(byteArrayIn);
-            Image returnImage = Image.FromStream(ms);
-            return returnImage;
+            if (byteArrayIn != null)
+            {
+                MemoryStream ms = new MemoryStream(byteArrayIn);
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+            }
+
+            return null;
         }
 
     }
