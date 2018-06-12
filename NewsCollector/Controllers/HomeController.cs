@@ -45,5 +45,10 @@ namespace NewsCollector.Controllers
         {
             return View();
         }
+
+        public ActionResult subscription()
+        {
+            return View();
+        }
     }
 }

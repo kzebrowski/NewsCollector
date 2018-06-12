@@ -6,4 +6,8 @@
     $(".iframe").click(function () {
         window.location.href = $(this).data("link");
     });
+
+    $("#btnSub").click(function () {
+        window.location.href = "/Home/subscription";
+    });
 });
