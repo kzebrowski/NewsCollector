@@ -17,7 +17,7 @@ namespace NewsCollector.Controllers
                 .Select(a => new ArticleViewModel {
                     Id = a.Id ,
                     Title = a.Title,
-                    Content = a.Body,
+                    Content = a.Body.Length >= 400 ? a.Body.Substring(0, 400) + "..." : a.Body,
                     LeadParagraph = a.LeadingParagraph,
                     Image = a.Image
                 })
