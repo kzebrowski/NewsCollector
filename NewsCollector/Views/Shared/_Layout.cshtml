@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -41,10 +43,16 @@
             <div class="button-container">
 
                 <!--MENU BUTTONS -->
-                <div class="button" id="btnArt">artykuły</div>
                 <div class="button" id="btnSub">subskrybcja</div>
                 <!-- <div class="button" id="btnAbo" onclick="goSS('about.html')">o redakcji</div> -->
-                <div class="button" id="btnLog">zaloguj się</div>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="button" id="btnLog">Wyloguj się</div>
+                }
+                else
+                {
+                    <div class="button" id="btnLog">Zaloguj się</div>
+                }
             </div>
         </div>
         <!-- LEFT GRID -->

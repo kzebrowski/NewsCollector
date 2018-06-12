@@ -20,12 +20,6 @@ namespace NewsCollector.Controllers
 
             return View(model);
         }
-        
-        public ActionResult ExportPdf(Guid id)
-        {
-            var q = new ActionAsPdf("ArticleRead", new { id = id });
-            return q;
-        }
 
         public ActionResult About()
         {

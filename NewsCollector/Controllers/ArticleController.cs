@@ -8,18 +8,17 @@ using NewsCollector.Models.DBOpps;
 using System.IO;
 using System.Drawing;
 using System.Threading.Tasks;
+using Rotativa;
 
 namespace NewsCollector.Controllers
 {   
-    [Authorize]
+    
     public class ArticleController : Controller
     {
         private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();
 
         public ActionResult Article(Guid id)
         {
-            var userController = new UserController();
-
             ArticleModel article =_articleDBOpps.GetArticles("Id", id.ToString()).First();
             
             if (article == null)
@@ -29,11 +28,12 @@ namespace NewsCollector.Controllers
 
             ArticleViewModel model = new ArticleViewModel
             {
+                Id = article.Id,
                 Title = article.Title,
                 LeadParagraph = article.LeadingParagraph
             };
             
-            if (User.Identity.IsAuthenticated && 
+            if (!User.Identity.IsAuthenticated || 
                 ((ClaimsIdentity)User.Identity).Claims
                     .Where(c => c.Type == ClaimTypes.Role)
                     .Select(c => c.Value).FirstOrDefault() == "Regular")
@@ -48,6 +48,38 @@ namespace NewsCollector.Controllers
             }
             
             return View(model);
+        }
+
+        public ActionResult ExportPdf(Guid id)
+        {
+            ArticleModel article = _articleDBOpps.GetArticles("Id", id.ToString()).First();
+
+            if (article == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+            ArticleViewModel model = new ArticleViewModel
+            {
+                Title = article.Title,
+                LeadParagraph = article.LeadingParagraph
+            };
+
+            if (!User.Identity.IsAuthenticated ||
+                ((ClaimsIdentity)User.Identity).Claims
+                    .Where(c => c.Type == ClaimTypes.Role)
+                    .Select(c => c.Value).FirstOrDefault() == "Regular")
+            {
+                model.Content = article.Body.Substring(0, 400) + "...";
+                ViewBag.Message = "( ͡° ͜ʖ ͡° )つ──☆*:・ﾟAby zobaczyć pełną wersję artykułu wykup subskrybcję.";
+            }
+            else
+            {
+                model.Content = article.Body;
+                ViewBag.Message = "";
+            }
+
+            return new ViewAsPdf("Article",model);
         }
 
         [HttpPost]
@@ -76,7 +108,8 @@ namespace NewsCollector.Controllers
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
-        
+
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
@@ -85,6 +118,7 @@ namespace NewsCollector.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> Update(ModifyArticleViewModel article)
         {
