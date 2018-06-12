@@ -8,5 +8,7 @@ namespace NewsCollector.Models
         public string Title {get; set;}
         public string LeadParagraph { get; set; }
         public string Content { get; set; }
+        public DateTime AdditionDate { get; set; }
+        public string Image { get; set; }
     }
 }

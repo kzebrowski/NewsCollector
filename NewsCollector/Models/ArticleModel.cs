@@ -25,7 +25,7 @@ namespace NewsCollector.Models
         public DateTime AdditionDate { get; set; }
 
         //! This byte array will be converted into an image when retrieving the article
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
     }
 }
