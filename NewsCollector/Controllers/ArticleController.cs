@@ -10,7 +10,8 @@ using System.Drawing;
 using System.Threading.Tasks;
 
 namespace NewsCollector.Controllers
-{
+{   
+    [Authorize]
     public class ArticleController : Controller
     {
         private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();
@@ -23,6 +24,7 @@ namespace NewsCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
+
             ArticleViewModel model = new ArticleViewModel
             {
                 Title = article.Title,
@@ -31,7 +33,21 @@ namespace NewsCollector.Controllers
                 AdditionDate = article.AdditionDate,
                 Image = article.Image
             };
-
+            
+            if (User.Identity.IsAuthenticated && 
+                ((ClaimsIdentity)User.Identity).Claims
+                    .Where(c => c.Type == ClaimTypes.Role)
+                    .Select(c => c.Value).FirstOrDefault() == "Regular")
+            {
+                model.Content = article.Body.Substring(0, 400) + "...";
+                ViewBag.Message = "( ͡° ͜ʖ ͡° )つ──☆*:・ﾟAby zobaczyć pełną wersję artykułu wykup subskrybcję.";
+            }
+            else
+            {
+                model.Content = article.Body;
+                ViewBag.Message = "";
+            }
+            
             return View(model);
         }
 

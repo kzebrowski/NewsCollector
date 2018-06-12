@@ -3,7 +3,6 @@ using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NewsCollector.Controllers
@@ -26,14 +25,7 @@ namespace NewsCollector.Controllers
 
             return View(model);
         }
-
-        public ActionResult ArticleRead(Guid id)
-        {
-            ApplicationDbContext newsContext = new ApplicationDbContext();
-            ArticleModel article = newsContext.articles.Single(ar => ar.Id == id);
-
-            return View(article);
-        }
+        
         public ActionResult ExportPdf(Guid id)
         {
             var q = new ActionAsPdf("ArticleRead", new { id = id });
@@ -51,11 +43,6 @@ namespace NewsCollector.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
-
-        public ActionResult Article()
-        {
             return View();
         }
 
