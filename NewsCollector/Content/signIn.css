@@ -1,25 +1,30 @@
-body {
-  font: 15px 'Lucida Grande', Tahoma, Verdana, sans-serif;
-  color: #404040;
-  background-image: url("https://i.ytimg.com/vi/yGEOXfRfLAo/maxresdefault.jpg");
-  background-size:cover;
+.signInPage {
+    font: 15px 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    color: #404040;
+    background-image: url("https://i.ytimg.com/vi/yGEOXfRfLAo/maxresdefault.jpg");
+    margin-top:-2%;
+    width: 100%;
+    height: 104%;
+    background-size:cover;
 }
-
+.space{
+    height:30px;
+}
 .containerLogin {
 
-  margin: 100px auto;
-  width: 300px;
-  height: 400px;
-  background: transparent;
-  align-content: center;
-  flex-wrap: wrap;
-  text-align:center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px 15px 15px 15px;
-  border-top-style:solid;
-  border-bottom-style:solid;
-   border-left-style:solid;
+    margin: 100px auto;
+    width: 300px;
+    height: 415spx;
+    background: transparent;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px 15px 15px 15px;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
     border-right-style:solid;
 }
 #loginTitle {
@@ -32,25 +37,34 @@ body {
 }
 input[type="text"]
 { 
+    width:275px;
 	margin: 10px;
 	font-size: 20px;
     text-decoration: underline;  
     background: transparent;
     border: none;
 }
-input[type="password"]
-{ 
-	margin: 10px ;
-	margin-bottom: 15px;
-	font-size: 20px;
-    text-decoration: underline;  
+input[type="password"] {
+
+    width: 275px;
+    margin: 10px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-decoration: underline;
     background: transparent;
     border: none;
-    text-color:black
+    text-color: black
 }
-label{
-	font-size:18px;
-    color:black;
+.remember_me {
+    font-size: 18px;
+    color: black;
+    align-content: center;
+}
+.checkbox {
+    align-content: center;
+}
+.regist{
+    margin-top:10px;
 }
 input[type=submit] {
 	font-family: serif;
@@ -65,7 +79,6 @@ input[type=submit] {
 	border-radius: 10px 10px 10px 10px;
 }
 a{
-
 	color:black;
     font-size:18px;
     font-weight:bold;
