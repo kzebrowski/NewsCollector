@@ -14,7 +14,7 @@
         <div class="space"></div>
         <div class="containerLogin">
             <div class="login">
-                <div id="loginTitle">Zaloguj się</div>
+                <div class="loginTitle">Zaloguj się</div>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <p>
@@ -27,8 +27,8 @@
                 </p>
                 <div class="remember_me">
                     <div class="checkbox">
-                        @Html.CheckBoxFor(m => m.RememberMe)
-                        @Html.LabelFor(m => m.RememberMe)
+                        @Html.CheckBoxFor(m => m.RememberMe, new { style = "margin-left:60px; margin-top:8px; margin-right:0px;vertical-align:middle;" })
+                        @Html.LabelFor(m => m.RememberMe, new { style = "margin-left:auto; margin-right:50px;vertical-align:middle;" })
                     </div>
                 </div>
                 <p class="submitBtn"><input type="submit" name="commit" value="ZALOGUJ"></p>
@@ -37,10 +37,10 @@
             <div class="login-help">
                 <a>@Html.ActionLink("Zapomniałeś hasła?", "ForgotPassword")</a>
             </div>
-            <div class="regist">
-                <p> </p>
-                @Html.ActionLink("Zarajestruj się", "Register")
-            </div>
+
+        </div>
+        <div class="regist">
+            @Html.ActionLink("Zarajestruj się", "Register")
         </div>
     }
 </div>

@@ -4,30 +4,33 @@
     margin-top: -2%;
     width: 100%;
     height: 104%;
+    background-size:cover;
 }
-
-#title{
+.space {
+    height: 20px;
+}
+.title{
 	/*margin-top: 60px;*/
 	font: 50px 'Lucida Grande', Tahoma, Verdana, sans-serif;
 	color:white;
 	text-align:center;
 }
 
-#subtitle{
+.subtitle{
 	margin-top: 10px;
 	font: 30px 'Lucida Grande', Tahoma, Verdana, sans-serif;
 	color:white;
 	text-align:center;
 }
 
-#title2{
+.title2{
 	padding-top: 20px;
 	margin-bottom: 20px;
 	font: 40px 'Lucida Sans Unicode';
 	color:black;
 	text-align:center;
 }
-#price{
+.price{
 	margin-bottom:30px;
 	font: 25px 'Lucida Sans Unicode';
 }
