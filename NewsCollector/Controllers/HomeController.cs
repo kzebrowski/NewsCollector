@@ -19,7 +19,8 @@ namespace NewsCollector.Controllers
                     Title = a.Title,
                     Content = a.Body.Length >= 400 ? a.Body.Substring(0, 400) + "..." : a.Body,
                     LeadParagraph = a.LeadingParagraph,
-                    Image = a.Image
+                    Image = a.Image,
+                    AdditionDate = a.AdditionDate
                 })
                 .ToList();      
 

@@ -5,14 +5,11 @@ using System.Security.Claims;
 using System.Web.Mvc;
 using NewsCollector.Models;
 using NewsCollector.Models.DBOpps;
-using System.IO;
-using System.Drawing;
 using System.Threading.Tasks;
 using Rotativa;
 
 namespace NewsCollector.Controllers
-{   
-    
+{
     public class ArticleController : Controller
     {
         private readonly ArticleDBOpps _articleDBOpps = new ArticleDBOpps();
@@ -102,7 +99,7 @@ namespace NewsCollector.Controllers
                 Title = article.Title,
                 LeadingParagraph = article.LeadParagraph,
                 Body = article.Content,
-                AdditionDate = DateTime.UtcNow,
+                AdditionDate = DateTime.Now,
                 Image = article.Image
             };
 
@@ -138,7 +135,7 @@ namespace NewsCollector.Controllers
                 Body = article.Content,
                 LeadingParagraph = article.LeadParagraph,
                 AuthorId = userIdValue,
-                AdditionDate = DateTime.UtcNow,
+                AdditionDate = DateTime.Now,
                 Image = article.Image
             };
 
@@ -146,33 +143,5 @@ namespace NewsCollector.Controllers
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
-
-        //! Use the following methods to save and retrieve images.
-        //! To save an image use the first method, to retrieve use the second one.
-
-        public byte[] imageToByteArray(System.Drawing.Image imageIn)
-        {
-            if (imageIn != null)
-            {
-                MemoryStream ms = new MemoryStream();
-                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-                return ms.ToArray();
-            }
-
-            return null;
-        }
-
-        public Image byteArrayToImage(byte[] byteArrayIn)
-        {
-            if (byteArrayIn != null)
-            {
-                MemoryStream ms = new MemoryStream(byteArrayIn);
-                Image returnImage = Image.FromStream(ms);
-                return returnImage;
-            }
-
-            return null;
-        }
-
     }
 }

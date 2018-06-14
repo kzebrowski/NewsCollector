@@ -67,6 +67,7 @@ namespace NewsCollector.Models.DBOpps
             {
                 try
                 {
+                    article.AdditionDate = DateTime.Now;
                     Articles.articles.Add(article);
                     await Articles.SaveChangesAsync();
                 }
