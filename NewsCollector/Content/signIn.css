@@ -37,25 +37,22 @@
     margin: 10px 30px 21px;
 }
 
-input[type="text"]
-{ 
-    width:275px;
-	margin: 10px;
-	font-size: 20px;
-    text-decoration: underline;  
-    background: transparent;
+input[type="text"] {
+    width: 275px;
+    margin: 10px;
+    font-size: 20px;
+    text-decoration: underline;
+    opacity: 0.4;
     border: none;
 }
 input[type="password"] {
-
     width: 275px;
     margin: 10px;
     margin-bottom: 15px;
     font-size: 20px;
     text-decoration: underline;
-    background: transparent;
+    opacity: 0.4;
     border: none;
-    text-color: black
 }
 .remember_me {
     font-size: 18px;
